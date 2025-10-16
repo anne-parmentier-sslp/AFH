@@ -48,157 +48,257 @@
     }
   </style>
 </head>
-<body class="text-white relative min-h-screen">
+  <body class="text-white relative min-h-screen">
   <!-- Full-page background image -->
   <div class="fixed inset-0 -z-50 bg-[url('./assets/background.svg')] bg-cover bg-center"></div>
 
   <!-- Floating decorative layer (under content) -->
   <div class="bg-layer pointer-events-none select-none fixed inset-0 -z-10 overflow-hidden">
-    <img src="./assets/stars.svg" alt="" class="absolute inset-0 w-[160%] max-w-none twinkle-slow opacity-70" />
-    <img src="./assets/kid1.svg" alt="" class="absolute bottom-8 left-2 w-28 md:w-36 float-slow"/>
-    <img src="./assets/kid2.svg" alt="" class="absolute bottom-6 right-6 w-28 md:w-36 drift-slow"/>
-    <img src="./assets/kid3.svg" alt="" class="absolute top-24 left-1/2 -translate-x-1/2 w-24 md:w-32 float-slow"/>
-    <img src="./assets/spaceship.svg" alt="" class="absolute top-8 right-2 w-16 md:w-20 drift-slow"/>
+    <img src="./assets/stars.svg" alt="" class="absolute inset-0 w-full max-w-none twinkle-slow opacity-70" />
+    <img src="./assets/kid1.svg" alt="" class="absolute bottom-4 left-2 w-16 sm:w-28 md:w-36 float-slow"/>
+    <img src="./assets/kid2.svg" alt="" class="absolute bottom-2 right-2 w-16 sm:w-28 md:w-36 drift-slow"/>
+    <img src="./assets/kid3.svg" alt="" class="absolute top-16 left-1/2 -translate-x-1/2 w-12 sm:w-24 md:w-32 float-slow"/>
+    <img src="./assets/spaceship.svg" alt="" class="absolute top-4 right-2 w-10 sm:w-16 md:w-20 drift-slow"/>
   </div>
 
   <!-- Top Bar -->
   <header class="no-print sticky top-0 z-50 backdrop-blur bg-black/40 border-b border-white/10">
-    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center gap-3">
-      <img src="./assets/logo.svg" alt="Adoptive Families of Houston" class="h-7 w-auto" />
-      <nav class="ml-auto flex gap-4 text-sm">
+    <div class="max-w-6xl mx-auto px-2 py-2 flex flex-col gap-2">
+      <div class="flex items-center justify-between w-full">
+        <div class="flex items-center gap-2">
+          <img src="./assets/logo.svg" alt="Adoptive Families of Houston" class="h-[1.75rem] w-auto" style="height:1.75rem;" />
+          <span class="orbitron text-lg font-bold whitespace-nowrap">Picnic Program</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <nav id="main-menu" aria-label="Main navigation" class="hidden sm:flex flex-row flex-wrap gap-2 sm:gap-4 text-sm">
+            <a class="hover:underline" href="#welcome">Welcome</a>
+            <a class="hover:underline" href="#sponsors">Sponsors</a>
+            <a class="hover:underline" href="#map">Activity Map</a>
+            <a class="hover:underline" href="#activity-sponsors">Activities</a>
+            <a class="hover:underline" href="#auction">Silent Auction</a>
+          </nav>
+          <button id="menu-toggle" class="sm:hidden ml-2 p-2 rounded focus:outline-none focus:ring-2 focus:ring-white" aria-label="Open menu">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+  <nav id="main-menu-mobile" aria-label="Mobile navigation" class="w-full flex flex-col gap-2 text-sm absolute top-16 left-0 bg-black/90 p-4 z-50 transition-all duration-200 hidden sm:hidden">
         <a class="hover:underline" href="#welcome">Welcome</a>
         <a class="hover:underline" href="#sponsors">Sponsors</a>
         <a class="hover:underline" href="#map">Activity Map</a>
         <a class="hover:underline" href="#activity-sponsors">Activities</a>
         <a class="hover:underline" href="#auction">Silent Auction</a>
       </nav>
+
     </div>
   </header>
 
   <main>
-    <!-- WELCOME / HERO TITLE -->
-    <section id="welcome" class="page max-w-3xl md:max-w-6xl mx-auto px-4 py-12 md:py-16">
-      <div class="grid md:grid-cols-2 gap-8 items-center">
+    <!-- Large logo at top of main -->
+
+  <section id="welcome" class="page w-full max-w-6xl mx-auto px-2 py-8 md:px-4 md:py-12">
+    <div class="w-full flex justify-center py-6">
+  <img src="./assets/logo.svg" alt="Adoptive Families of Houston" class="h-24 w-auto" />
+    </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 items-center">
         <div>
-          <p class="text-sm uppercase tracking-wide text-white/80">Welcome</p>
-          <h1 class="text-3xl md:text-4xl font-extrabold mt-1">
-            Adoptive Families of Houston presents the
-            <span class="whitespace-nowrap">14th Annual Celebration of Adoption Picnic</span>
+        <p class="text-sm uppercase tracking-wide text-white/80 text-center">Welcomes You To</p>
+  <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold mt-1 text-center">
+
+            <span class="block text-center">The 14th Annual<br>Celebration of Adoption Picnic</span>
           </h1>
+        <object type="image/svg+xml" data="./assets/title.svg" aria-label="Adoption is Out of This World"
+                    class="w-full h-auto max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl mx-auto pt-4 px-4" style="display:block;width:100%;height:auto;max-width:90vw;">
+            Adoption is Out of This World
+          </object>
           <ul class="mt-4 text-white/90 space-y-1">
-            <li><strong>Date:</strong> <span id="event-date">[Add date]</span></li>
-            <li><strong>Time:</strong> <span id="event-time">[Add time]</span></li>
-            <li><strong>Location:</strong> <span id="event-location">[Add Park / Venue Name]</span></li>
+            <li><strong>Date:</strong> <span id="event-date">October 26, 2025</span></li>
+            <li><strong>Time:</strong> <span id="event-time">3:00 PM - 6:00 PM</span></li>
+            <li><strong>Location:</strong> <span id="event-location">Silver Sycamore</span></li>
           </ul>
           <div class="mt-6 flex flex-wrap gap-3">
+            <a href="#schedule" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15">View Schedule</a>
             <a href="#map" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15">View Activity Map</a>
             <a href="#auction" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[rgb(var(--accent))] text-black font-semibold">Silent Auction</a>
           </div>
         </div>
-        <figure class="rounded-2xl overflow-hidden border border-white/10 bg-white/5 p-3">
-          <!-- Use the Title SVG as the hero art for a cleaner page -->
-          <img src="./assets/title.svg" alt="Adoption is Out of This World" class="w-full h-auto" />
-        </figure>
       </div>
-    </section>
 
     <!-- SPONSORS -->
-    <section id="sponsors" class="page max-w-6xl mx-auto px-4 py-10">
-      <h2 class="text-2xl md:text-3xl font-extrabold mb-6">Sponsors</h2>
-      <div class="space-y-8">
-        <div>
-          <h3 class="orbitron text-lg md:text-xl font-bold mb-2 text-[rgb(var(--accent))]">Presenting</h3>
-          <ul class="list-disc list-inside space-y-1 text-white/90">
+  <section id="sponsors" class="page w-full max-w-6xl mx-auto px-2 py-8 md:px-4 md:py-10">
+  <h2 class="text-2xl md:text-3xl font-extrabold mb-4">Sponsors</h2>
+      <div class="space-y-6">
+        <div class="rounded-xl bg-gradient-to-r from-yellow-400/30 to-yellow-200/10 border-l-4 border-yellow-300 p-4">
+          <h3 class="orbitron text-lg md:text-xl font-bold mb-2 text-yellow-300">Presenting</h3>
+          <ul class="list-disc list-inside space-y-1 text-yellow-100">
             <li>Anonymous</li>
             <li>Anonymous</li>
-            <li>Kate Otte et al.</li>
+            <li>Kathie Otte et al.</li>
           </ul>
         </div>
-        <div>
-          <h3 class="orbitron text-lg md:text-xl font-bold mb-2 text-[rgb(var(--pink))]">Platinum</h3>
-          <ul class="list-disc list-inside space-y-1 text-white/90">
+        <div class="rounded-xl bg-gradient-to-r from-pink-400/30 to-pink-200/10 border-l-4 border-pink-300 p-4">
+          <h3 class="orbitron text-lg md:text-xl font-bold mb-2 text-pink-300">Platinum</h3>
+          <ul class="list-disc list-inside space-y-1 text-pink-100">
             <li>The Casey Family</li>
           </ul>
         </div>
-        <div>
-          <h3 class="orbitron text-lg md:text-xl font-bold mb-2">Silver</h3>
-          <ul class="grid md:grid-cols-2 gap-2 text-white/90">
+        <div class="rounded-xl bg-gradient-to-r from-gray-400/30 to-gray-200/10 border-l-4 border-gray-300 p-4">
+          <h3 class="orbitron text-lg md:text-xl font-bold mb-2 text-gray-200">Silver</h3>
+          <ul class="grid md:grid-cols-2 gap-2 text-gray-100 list-disc list-inside">
             <li>Kari Bird State Farm Insurance</li>
             <li>Copper State Rubber</li>
+          </ul>
+        </div>
+        <div class="rounded-xl bg-gradient-to-r from-amber-700/30 to-amber-400/10 border-l-4 border-amber-500 p-4">
+          <h3 class="orbitron text-lg md:text-xl font-bold mb-2 text-amber-300">Bronze</h3>
+          <ul class="list-disc list-inside space-y-1 text-amber-100">
             <li>Palmer Dental Group of Houston</li>
             <li>Raju Advaney &amp; Abhishek Kansara</li>
+          </ul>
+        </div>
+        <div class="rounded-xl bg-gradient-to-r from-blue-400/30 to-blue-200/10 border-l-4 border-blue-300 p-4">
+          <h3 class="orbitron text-lg md:text-xl font-bold mb-2 text-blue-200">Friends of AFH</h3>
+          <ul class="list-disc list-inside space-y-1 text-blue-100">
             <li>Chester and Aysha Urban</li>
           </ul>
         </div>
+      </div>
+    </section>
+
+    <!-- SCHEDULE -->
+    <section id="schedule" class="page w-full max-w-6xl mx-auto px-2 py-8 md:px-4 md:py-10">
+  <h2 class="text-2xl md:text-3xl font-extrabold mb-4">Schedule</h2>
+      <div class="space-y-4 text-white/90">
         <div>
-          <h3 class="orbitron text-lg md:text-xl font-bold mb-2">Bronze</h3>
-          <ul class="list-disc list-inside space-y-1 text-white/90">
-            <li>[Add Bronze sponsor names]</li>
-          </ul>
+          <div class="flex flex-col sm:flex-row sm:items-start gap-1">
+            <span class="font-bold w-24 flex-shrink-0">3:00 PM</span>
+            <div>
+              Check-in Begins<br>
+              Purchase Raffle Tickets<br>
+              All Activities Open<br>
+              Dippin’ Dots Open
+            </div>
+          </div>
         </div>
         <div>
-          <h3 class="orbitron text-lg md:text-xl font-bold mb-2">Friends of AFH</h3>
-          <ul class="list-disc list-inside space-y-1 text-white/90">
-            <li>[Add list]</li>
-          </ul>
+          <div class="flex flex-col sm:flex-row sm:items-start gap-1">
+            <span class="font-bold w-24 flex-shrink-0">4:30 PM</span>
+            <div>
+              Food lines open
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="flex flex-col sm:flex-row sm:items-start gap-1">
+            <span class="font-bold w-24 flex-shrink-0">5:15 PM</span>
+            <div>
+              Announcements<br>
+              Acknowledgments<br>
+              Last call for Raffle
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="flex flex-col sm:flex-row sm:items-start gap-1">
+            <span class="font-bold w-24 flex-shrink-0">5:25 PM</span>
+            <div>
+              Silent Auction Close<br>
+              Raffle Close
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="flex flex-col sm:flex-row sm:items-start gap-1">
+            <span class="font-bold w-24 flex-shrink-0">5:30 PM</span>
+            <div>
+              Raffle Drawing<br>
+              Silent Auction winner<br>
+              Announcements<br>
+              Food lines close
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="flex flex-col sm:flex-row sm:items-start gap-1">
+            <span class="font-bold w-24 flex-shrink-0">6:00 PM</span>
+            <div>
+              Event ends<br>
+              Goodie bag hand out
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- ACTIVITY MAP -->
-    <section id="map" class="page max-w-6xl mx-auto px-4 py-10">
-      <div class="flex items-end justify-between gap-6 mb-3">
-        <h2 class="text-2xl md:text-3xl font-extrabold">Activity Map</h2>
-        <a href="./assets/map.svg" class="no-print text-sm underline">Open full-size</a>
-      </div>
-      <figure class="rounded-2xl overflow-hidden border border-white/10 bg-white/5">
-        <img src="./assets/map.svg" alt="Map of activities with numbered stations" class="w-full max-h-[70vh] object-contain" />
-        <figcaption class="p-3 text-white/70 text-sm">Tap to zoom. Numbers correspond to the activity list below.</figcaption>
+  <section id="map" class="page w-full max-w-6xl mx-auto px-2 py-8 md:px-4 md:py-10">
+  <div class="mb-2 sm:mb-3">
+  <h2 class="text-2xl md:text-3xl font-extrabold mb-4">Activity Map</h2>
+    <a href="./assets/map.svg" class="no-print text-sm underline mt-1 block">Open full-size</a>
+  </div>
+      <figure class="rounded-2xl overflow-hidden border border-white/10 bg-white/5 p-2 sm:p-3 w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl mx-auto">
+  <img src="./assets/map.svg" alt="Map of activities with named areas" class="w-full h-auto max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl mx-auto object-contain" />
+  <figcaption class="p-2 sm:p-3 text-white/70 text-xs sm:text-sm">Areas are named and correspond to the activity list below. Use the "Open full-size" link above to zoom in.</figcaption>
       </figure>
     </section>
 
     <!-- ACTIVITIES -->
-    <section id="activity-sponsors" class="page max-w-6xl mx-auto px-4 py-10">
-      <h2 class="text-2xl md:text-3xl font-extrabold mb-6">Activities & Sponsors</h2>
-      <ol class="grid md:grid-cols-2 gap-4 list-decimal list-inside">
-        <li class="bg-white/5 border border-white/10 rounded-xl p-4">
-          <div class="font-semibold">Petting Zoo &amp; Pony Rides</div>
-          <div class="text-sm text-white/80">Sponsored by: <span class="font-medium">Brett &amp; Dawn Berly</span></div>
-        </li>
-        <li class="bg-white/5 border border-white/10 rounded-xl p-4">
-          <div class="font-semibold">Balloons &amp; Face Painting</div>
-          <div class="text-sm text-white/80">Sponsored by: <span class="font-medium">Susan &amp; David Motley</span></div>
-        </li>
-        <li class="bg-white/5 border border-white/10 rounded-xl p-4">
-          <div class="font-semibold">Selfie Station</div>
-          <div class="text-sm text-white/80">Sponsored by: <span class="font-medium">Mike &amp; Sandra Lagos</span></div>
-        </li>
-        <li class="bg-white/5 border border-white/10 rounded-xl p-4">
-          <div class="font-semibold">[Add additional activities]</div>
-          <div class="text-sm text-white/80">Sponsored by: <span class="font-medium">[Sponsor Name]</span></div>
-        </li>
-      </ol>
+  <section id="activity-sponsors" class="page w-full max-w-6xl mx-auto px-2 py-8 md:px-4 md:py-10">
+  <h2 class="text-2xl md:text-3xl font-extrabold mb-4">Activities & Sponsors</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-4">
+    <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+      <div class="font-semibold">Petting Zoo &amp; Pony Rides</div>
+      <div class="text-sm text-white/80">Sponsored by: <span class="font-medium">Brett &amp; Dawn Berly</span></div>
+    </div>
+    <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+      <div class="font-semibold">Balloons &amp; Face Painting</div>
+      <div class="text-sm text-white/80">Sponsored by: <span class="font-medium">Susan &amp; David Motley</span></div>
+    </div>
+    <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+      <div class="font-semibold">Selfie Station</div>
+      <div class="text-sm text-white/80">Sponsored by: <span class="font-medium">Mike &amp; Sandra Lagos</span></div>
+    </div>
+    <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+      <div class="font-semibold">Obstacle Course</div>
+      <div class="text-sm text-white/80 flex items-center gap-2">Sponsored by: <span class="font-medium">Michael's Shell</span>
+        <img src="./assets/shell-logo.png" alt="Shell Logo" class="h-10 w-auto inline-block align-middle" />
+      </div>
+    </div>
+  </div>
     </section>
 
     <!-- SILENT AUCTION -->
-    <section id="auction" class="page max-w-6xl mx-auto px-4 py-10">
-      <h2 class="text-2xl md:text-3xl font-extrabold mb-4">Silent Auction</h2>
-      <div class="space-y-3 text-white/90 leading-relaxed">
-        <p><strong>Must be present to win.</strong></p>
-        <p><strong>Buy Now option available.</strong> You may purchase any silent auction item on the spot for its fair market value. See volunteers in the saloon for details.</p>
-        <p><strong>Schedule:</strong> Bidding opens at <em>12:00 PM</em>, last call at <em>2:25 PM</em>, auction closes at <em>2:30 PM</em>. Winners announced at <em>2:40 PM</em>.</p>
-        <p>Minimum bid increments are listed on each bid sheet. Please write legibly and include a phone number.</p>
-        <p>All items are sold “as-is.” No exchanges or refunds. Accepted payments: cash and credit/debit. Checks payable to <em>Adoptive Families of Houston</em>.</p>
-      </div>
+  <section id="auction" class="page w-full max-w-6xl mx-auto px-2 py-8 md:px-4 md:py-10">
+  <h2 class="text-2xl md:text-3xl font-extrabold mb-4">Silent Auction</h2>
+  <div class="space-y-4 text-white/90 leading-relaxed text-sm sm:text-base">
+    <div class="bg-white/10 border-l-4 border-[rgb(var(--accent))] rounded-lg p-3">
+      <p class="font-semibold text-[rgb(var(--accent))] mb-1">Must be present to win.</p>
+      <p class="mb-1"><span class="font-semibold text-pink-300">Buy Now option:</span> Purchase any silent auction item on the spot for its fair market value. See volunteers in the saloon for details.</p>
+    </div>
+    <div>
+      <h3 class="orbitron text-base font-bold mb-2 text-white/80">Auction Schedule</h3>
+      <ul class="space-y-1 ml-2">
+        <li><span class="inline-block w-32 font-semibold text-white/80">12:00 PM</span> Bidding opens</li>
+        <li><span class="inline-block w-32 font-semibold text-white/80">2:25 PM</span> Last call for bids</li>
+        <li><span class="inline-block w-32 font-semibold text-white/80">2:30 PM</span> Auction closes</li>
+        <li><span class="inline-block w-32 font-semibold text-white/80">2:40 PM</span> Winners announced</li>
+      </ul>
+    </div>
+    <div>
+      <p class="mb-1">Minimum bid increments are listed on each bid sheet. Please write legibly and include a phone number.</p>
+      <p class="mb-1">All items are sold <span class="italic">as-is</span>. No exchanges or refunds.</p>
+      <p class="mb-1">Accepted payments: <span class="font-semibold">cash</span> and <span class="font-semibold">credit/debit</span>. Checks payable to <span class="italic">Adoptive Families of Houston</span>.</p>
+    </div>
+  </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="page max-w-6xl mx-auto px-4 pt-6 pb-16 text-sm text-white/70">
+    <footer class="page w-full max-w-6xl mx-auto px-2 pt-4 pb-10 text-xs sm:text-sm text-white/70">
       <hr class="border-white/10 mb-4" />
-      <div class="flex flex-col md:flex-row gap-2 md:items-center md:justify-between">
+      <div class="flex flex-col sm:flex-row gap-2 sm:items-center sm:justify-between">
         <p>© <span id="year"></span> Adoptive Families of Houston. All rights reserved.</p>
-        <p>Questions? Visit the info table or email <a href="mailto:info@example.org" class="underline">info@example.org</a>.</p>
-      </div>
     </footer>
   </main>
 
@@ -210,6 +310,18 @@
         const id = a.getAttribute('href');
         const el = document.querySelector(id);
         if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth'}); }
+      });
+    });
+    // Hamburger menu toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const mainMenuMobile = document.getElementById('main-menu-mobile');
+    menuToggle.addEventListener('click', () => {
+      mainMenuMobile.classList.toggle('hidden');
+    });
+    // Hide mobile menu on link click
+    mainMenuMobile.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mainMenuMobile.classList.add('hidden');
       });
     });
   </script>
