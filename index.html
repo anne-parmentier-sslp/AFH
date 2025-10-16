@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Adoption is Out of This World – AFH Picnic Program</title>
+  <meta name="description" content="Mobile program for the Adoption is Out of This World picnic: welcome, sponsors, activity map, activities, silent auction." />
+
+  <!-- Social preview (uses the hero graphic asset) -->
+  <meta property="og:title" content="Adoptive Families of Houston – Celebration of Adoption Picnic" />
+  <meta property="og:description" content="Explore activities, map, sponsors, and silent auction." />
+  <meta property="og:image" content="./assets/hero-art.svg" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root{
+      --brand-1: 24 34 72;   /* deep space blue */
+      --accent: 255 202 70;  /* starlight gold */
+      --pink: 255 140 220;   /* cosmic pink */
+    }
+    body{ font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Noto Sans; }
+    h1,h2,h3,.orbitron{ font-family: Orbitron, Inter, ui-sans-serif; letter-spacing:.02em; }
+
+    /* Gentle motion */
+    @keyframes floatY { 0%{ transform: translateY(0) } 50%{ transform: translateY(-6px) } 100%{ transform: translateY(0) } }
+    @keyframes driftX { 0%{ transform: translateX(0) } 50%{ transform: translateX(8px) } 100%{ transform: translateX(0) } }
+    @keyframes twinkle { 0%,100%{ opacity:.65 } 50%{ opacity:.9 } }
+    .float-slow{ animation: floatY 9s ease-in-out infinite; }
+    .drift-slow{ animation: driftX 14s ease-in-out infinite; }
+    .twinkle-slow{ animation: twinkle 6s ease-in-out infinite; }
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      .float-slow, .drift-slow, .twinkle-slow{ animation: none !important; }
+    }
+
+    /* Print styles */
+    @media print{
+      .no-print{ display:none !important; }
+      .page{ box-shadow:none !important; }
+      a[href]::after{ content: " (" attr(href) ")"; font-size: .8em; }
+      body{ color:#000; }
+      .bg-layer{ display:none; }
+    }
+  </style>
+</head>
+<body class="text-white relative min-h-screen">
+  <!-- Full-page background image -->
+  <div class="fixed inset-0 -z-50 bg-[url('./assets/background.svg')] bg-cover bg-center"></div>
+
+  <!-- Floating decorative layer (under content) -->
+  <div class="bg-layer pointer-events-none select-none fixed inset-0 -z-10 overflow-hidden">
+    <img src="./assets/stars.svg" alt="" class="absolute inset-0 w-[160%] max-w-none twinkle-slow opacity-70" />
+    <img src="./assets/kid1.svg" alt="" class="absolute bottom-8 left-2 w-28 md:w-36 float-slow"/>
+    <img src="./assets/kid2.svg" alt="" class="absolute bottom-6 right-6 w-28 md:w-36 drift-slow"/>
+    <img src="./assets/kid3.svg" alt="" class="absolute top-24 left-1/2 -translate-x-1/2 w-24 md:w-32 float-slow"/>
+    <img src="./assets/spaceship.svg" alt="" class="absolute top-8 right-2 w-16 md:w-20 drift-slow"/>
+  </div>
+
+  <!-- Top Bar -->
+  <header class="no-print sticky top-0 z-50 backdrop-blur bg-black/40 border-b border-white/10">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center gap-3">
+      <img src="./assets/logo.svg" alt="Adoptive Families of Houston" class="h-7 w-auto" />
+      <nav class="ml-auto flex gap-4 text-sm">
+        <a class="hover:underline" href="#welcome">Welcome</a>
+        <a class="hover:underline" href="#sponsors">Sponsors</a>
+        <a class="hover:underline" href="#map">Activity Map</a>
+        <a class="hover:underline" href="#activity-sponsors">Activities</a>
+        <a class="hover:underline" href="#auction">Silent Auction</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- WELCOME / HERO TITLE -->
+    <section id="welcome" class="page max-w-3xl md:max-w-6xl mx-auto px-4 py-12 md:py-16">
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <div>
+          <p class="text-sm uppercase tracking-wide text-white/80">Welcome</p>
+          <h1 class="text-3xl md:text-4xl font-extrabold mt-1">
+            Adoptive Families of Houston presents the
+            <span class="whitespace-nowrap">14th Annual Celebration of Adoption Picnic</span>
+          </h1>
+          <ul class="mt-4 text-white/90 space-y-1">
+            <li><strong>Date:</strong> <span id="event-date">[Add date]</span></li>
+            <li><strong>Time:</strong> <span id="event-time">[Add time]</span></li>
+            <li><strong>Location:</strong> <span id="event-location">[Add Park / Venue Name]</span></li>
+          </ul>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="#map" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15">View Activity Map</a>
+            <a href="#auction" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[rgb(var(--accent))] text-black font-semibold">Silent Auction</a>
+          </div>
+        </div>
+        <figure class="rounded-2xl overflow-hidden border border-white/10 bg-white/5 p-3">
+          <!-- Use the Title SVG as the hero art for a cleaner page -->
+          <img src="./assets/title.svg" alt="Adoption is Out of This World" class="w-full h-auto" />
+        </figure>
+      </div>
+    </section>
+
+    <!-- SPONSORS -->
+    <section id="sponsors" class="page max-w-6xl mx-auto px-4 py-10">
+      <h2 class="text-2xl md:text-3xl font-extrabold mb-6">Sponsors</h2>
+      <div class="space-y-8">
+        <div>
+          <h3 class="orbitron text-lg md:text-xl font-bold mb-2 text-[rgb(var(--accent))]">Presenting</h3>
+          <ul class="list-disc list-inside space-y-1 text-white/90">
+            <li>Anonymous</li>
+            <li>Anonymous</li>
+            <li>Kate Otte et al.</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="orbitron text-lg md:text-xl font-bold mb-2 text-[rgb(var(--pink))]">Platinum</h3>
+          <ul class="list-disc list-inside space-y-1 text-white/90">
+            <li>The Casey Family</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="orbitron text-lg md:text-xl font-bold mb-2">Silver</h3>
+          <ul class="grid md:grid-cols-2 gap-2 text-white/90">
+            <li>Kari Bird State Farm Insurance</li>
+            <li>Copper State Rubber</li>
+            <li>Palmer Dental Group of Houston</li>
+            <li>Raju Advaney &amp; Abhishek Kansara</li>
+            <li>Chester and Aysha Urban</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="orbitron text-lg md:text-xl font-bold mb-2">Bronze</h3>
+          <ul class="list-disc list-inside space-y-1 text-white/90">
+            <li>[Add Bronze sponsor names]</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="orbitron text-lg md:text-xl font-bold mb-2">Friends of AFH</h3>
+          <ul class="list-disc list-inside space-y-1 text-white/90">
+            <li>[Add list]</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACTIVITY MAP -->
+    <section id="map" class="page max-w-6xl mx-auto px-4 py-10">
+      <div class="flex items-end justify-between gap-6 mb-3">
+        <h2 class="text-2xl md:text-3xl font-extrabold">Activity Map</h2>
+        <a href="./assets/map.svg" class="no-print text-sm underline">Open full-size</a>
+      </div>
+      <figure class="rounded-2xl overflow-hidden border border-white/10 bg-white/5">
+        <img src="./assets/map.svg" alt="Map of activities with numbered stations" class="w-full max-h-[70vh] object-contain" />
+        <figcaption class="p-3 text-white/70 text-sm">Tap to zoom. Numbers correspond to the activity list below.</figcaption>
+      </figure>
+    </section>
+
+    <!-- ACTIVITIES -->
+    <section id="activity-sponsors" class="page max-w-6xl mx-auto px-4 py-10">
+      <h2 class="text-2xl md:text-3xl font-extrabold mb-6">Activities & Sponsors</h2>
+      <ol class="grid md:grid-cols-2 gap-4 list-decimal list-inside">
+        <li class="bg-white/5 border border-white/10 rounded-xl p-4">
+          <div class="font-semibold">Petting Zoo &amp; Pony Rides</div>
+          <div class="text-sm text-white/80">Sponsored by: <span class="font-medium">Brett &amp; Dawn Berly</span></div>
+        </li>
+        <li class="bg-white/5 border border-white/10 rounded-xl p-4">
+          <div class="font-semibold">Balloons &amp; Face Painting</div>
+          <div class="text-sm text-white/80">Sponsored by: <span class="font-medium">Susan &amp; David Motley</span></div>
+        </li>
+        <li class="bg-white/5 border border-white/10 rounded-xl p-4">
+          <div class="font-semibold">Selfie Station</div>
+          <div class="text-sm text-white/80">Sponsored by: <span class="font-medium">Mike &amp; Sandra Lagos</span></div>
+        </li>
+        <li class="bg-white/5 border border-white/10 rounded-xl p-4">
+          <div class="font-semibold">[Add additional activities]</div>
+          <div class="text-sm text-white/80">Sponsored by: <span class="font-medium">[Sponsor Name]</span></div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- SILENT AUCTION -->
+    <section id="auction" class="page max-w-6xl mx-auto px-4 py-10">
+      <h2 class="text-2xl md:text-3xl font-extrabold mb-4">Silent Auction</h2>
+      <div class="space-y-3 text-white/90 leading-relaxed">
+        <p><strong>Must be present to win.</strong></p>
+        <p><strong>Buy Now option available.</strong> You may purchase any silent auction item on the spot for its fair market value. See volunteers in the saloon for details.</p>
+        <p><strong>Schedule:</strong> Bidding opens at <em>12:00 PM</em>, last call at <em>2:25 PM</em>, auction closes at <em>2:30 PM</em>. Winners announced at <em>2:40 PM</em>.</p>
+        <p>Minimum bid increments are listed on each bid sheet. Please write legibly and include a phone number.</p>
+        <p>All items are sold “as-is.” No exchanges or refunds. Accepted payments: cash and credit/debit. Checks payable to <em>Adoptive Families of Houston</em>.</p>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="page max-w-6xl mx-auto px-4 pt-6 pb-16 text-sm text-white/70">
+      <hr class="border-white/10 mb-4" />
+      <div class="flex flex-col md:flex-row gap-2 md:items-center md:justify-between">
+        <p>© <span id="year"></span> Adoptive Families of Houston. All rights reserved.</p>
+        <p>Questions? Visit the info table or email <a href="mailto:info@example.org" class="underline">info@example.org</a>.</p>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href');
+        const el = document.querySelector(id);
+        if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth'}); }
+      });
+    });
+  </script>
+</body>
+</html>
