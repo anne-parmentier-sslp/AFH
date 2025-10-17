@@ -80,7 +80,7 @@
             <a class="hover:underline" href="#auction">Silent Auction</a>
           </nav>
           <button id="share-btn" class="ml-2 p-2 rounded focus:outline-none focus:ring-2 focus:ring-white bg-white/10 hover:bg-white/20 text-white flex items-center gap-1" aria-label="Share this page" title="Share this page">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 8a3 3 0 11-6 0 3 3 0 016 0zm6 8a3 3 0 11-6 0 3 3 0 016 0zm-6 0a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+            <span id="share-icon"></span>
             <span class="hidden sm:inline">Share</span>
           </button>
           <button id="menu-toggle" class="sm:hidden ml-2 p-2 rounded focus:outline-none focus:ring-2 focus:ring-white" aria-label="Open menu">
@@ -301,6 +301,24 @@
     document.getElementById('year').textContent = new Date().getFullYear();
     // Share button logic
     const shareBtn = document.getElementById('share-btn');
+    // Device-specific share icon
+    const shareIconSpan = document.getElementById('share-icon');
+    function isIOS() {
+      return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    }
+    function isAndroid() {
+      return /Android/.test(navigator.userAgent);
+    }
+    if (shareIconSpan) {
+      if (isIOS()) {
+        shareIconSpan.innerHTML = `<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"w-5 h-5\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 16V4\"/><path d=\"M8 8l4-4 4 4\"/><rect x=\"4\" y=\"16\" width=\"16\" height=\"4\" rx=\"2\"/></svg>`;
+      } else if (isAndroid()) {
+        shareIconSpan.innerHTML = `<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"w-5 h-5\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"18\" cy=\"5\" r=\"2\"/><circle cx=\"6\" cy=\"12\" r=\"2\"/><circle cx=\"18\" cy=\"19\" r=\"2\"/><line x1=\"8.59\" y1=\"13.51\" x2=\"15.42\" y2=\"17.49\"/><line x1=\"15.41\" y1=\"6.51\" x2=\"8.59\" y2=\"10.49\"/></svg>`;
+      } else {
+        // Default to iOS style for desktop/other
+        shareIconSpan.innerHTML = `<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"w-5 h-5\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 16V4\"/><path d=\"M8 8l4-4 4 4\"/><rect x=\"4\" y=\"16\" width=\"16\" height=\"4\" rx=\"2\"/></svg>`;
+      }
+    }
     if (shareBtn) {
       shareBtn.addEventListener('click', async () => {
         const shareData = {
