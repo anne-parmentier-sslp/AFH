@@ -79,6 +79,10 @@
             <a class="hover:underline" href="#activity-sponsors">Activities</a>
             <a class="hover:underline" href="#auction">Silent Auction</a>
           </nav>
+          <button id="share-btn" class="ml-2 p-2 rounded focus:outline-none focus:ring-2 focus:ring-white bg-white/10 hover:bg-white/20 text-white flex items-center gap-1" aria-label="Share this page" title="Share this page">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 8a3 3 0 11-6 0 3 3 0 016 0zm6 8a3 3 0 11-6 0 3 3 0 016 0zm-6 0a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+            <span class="hidden sm:inline">Share</span>
+          </button>
           <button id="menu-toggle" class="sm:hidden ml-2 p-2 rounded focus:outline-none focus:ring-2 focus:ring-white" aria-label="Open menu">
             <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -295,6 +299,33 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+    // Share button logic
+    const shareBtn = document.getElementById('share-btn');
+    if (shareBtn) {
+      shareBtn.addEventListener('click', async () => {
+        const shareData = {
+          title: document.title,
+          text: 'Adoption is Out of This World – AFH Picnic Program',
+          url: window.location.href
+        };
+        if (navigator.share) {
+          try {
+            await navigator.share(shareData);
+          } catch (err) {
+            // User cancelled or error
+          }
+        } else {
+          // Fallback: copy link
+          try {
+            await navigator.clipboard.writeText(window.location.href);
+            shareBtn.innerHTML = '<span class="text-green-300">Link copied!</span>';
+            setTimeout(() => { shareBtn.innerHTML = `<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"w-5 h-5\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M15 8a3 3 0 11-6 0 3 3 0 016 0zm6 8a3 3 0 11-6 0 3 3 0 016 0zm-6 0a3 3 0 11-6 0 3 3 0 016 0z\" /></svg><span class=\"hidden sm:inline\">Share</span>`; }, 1500);
+          } catch (err) {
+            alert('Could not copy link.');
+          }
+        }
+      });
+    }
     // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(a=>{
       a.addEventListener('click', e=>{
