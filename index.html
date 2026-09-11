@@ -107,14 +107,16 @@
     }
 
     /* ---- Sea-life layer ----
-       The sand is 6.49:1 and floored at 900px wide, so its height follows the
-       viewport WIDTH: --floor is the sea-floor line. Bottom dwellers sit just
-       above it. Swimmers use a viewport-HEIGHT percentage, clamped so they can
-       never sink into whatever is below them — a percentage and a fixed offset
-       drifting past each other is what collided on short, wide windows. */
-    /* --sand-min is the one place the sea floor's depth is set. The sand image
-       reads it as a min-width and --floor derives its height from the same
-       number, so the bank and everything resting on it can't drift apart. */
+       The sand is 6.49:1, so its height follows the viewport WIDTH, floored by
+       --sand-min: --floor is the resulting sea-floor line. --sand-min is the one
+       place that depth is set — the sand image reads it as a min-width and
+       --floor derives from the same number, so the bank and everything resting
+       on it can't drift apart.
+
+       Bottom dwellers sit just above --floor. Swimmers use a viewport-HEIGHT
+       percentage, clamped so they can never sink into whatever is below them —
+       a percentage and a fixed offset drifting past each other is what collided
+       on short, wide windows. */
     .decor{
       --sand-min: 620px;
       --floor: calc(max(var(--sand-min), 100vw) / 6.49);
@@ -239,7 +241,7 @@
 
       <div class="glass rounded-3xl p-5 sm:p-8 max-w-3xl mx-auto text-center">
         <p class="text-xs sm:text-sm uppercase tracking-[.18em] font-bold text-[rgb(var(--wave))]">Welcomes You To</p>
-        <h1 class="display text-2xl sm:text-3xl md:text-4xl font-normal mt-2 text-[rgb(var(--ink))]">
+        <h1 class="display text-xl sm:text-2xl md:text-3xl font-normal mt-2 text-[rgb(var(--ink))]">
           The 15th Annual<br>Celebration of Adoption Picnic
         </h1>
 
@@ -251,7 +253,7 @@
         <hr class="sea-rule my-5 max-w-xs mx-auto" style="background:linear-gradient(90deg,rgb(var(--wave)/0),rgb(var(--wave)/.85),rgb(var(--wave)/0))" />
 
         <ul class="text-[rgb(var(--ink-soft))] space-y-1 text-base sm:text-lg">
-          <li><strong class="text-[rgb(var(--ink))]">Date:</strong> <span id="event-date">October 26, 2025</span></li>
+          <li><strong class="text-[rgb(var(--ink))]">Date:</strong> <span id="event-date">October 18, 2026</span></li>
           <li><strong class="text-[rgb(var(--ink))]">Time:</strong> <span id="event-time">3:00 PM – 6:00 PM</span></li>
           <li><strong class="text-[rgb(var(--ink))]">Location:</strong> <span id="event-location">Silver Sycamore</span></li>
         </ul>
@@ -267,7 +269,7 @@
 
     <!-- SPONSORS -->
     <section id="sponsors" class="page w-full max-w-6xl mx-auto px-3 py-4 md:px-4 md:py-6">
-      <h2 class="sea-head display text-2xl md:text-3xl font-normal">Oceans of Thanks</h2>
+      <h2 class="sea-head display text-xl md:text-2xl font-normal">Oceans of Thanks</h2>
       <p class="on-wash mt-1 mb-3 text-lg font-semibold italic text-[rgb(var(--ink-soft))]">To our amazing sponsors — thank you for your ocean-deep support</p>
       <hr class="sea-rule mb-5" />
 
@@ -311,7 +313,7 @@
 
     <!-- SCHEDULE -->
     <section id="schedule" class="page w-full max-w-6xl mx-auto px-3 py-4 md:px-4 md:py-6">
-      <h2 class="sea-head display text-2xl md:text-3xl font-normal">Schedule of Events</h2>
+      <h2 class="sea-head display text-xl md:text-2xl font-normal">Schedule of Events</h2>
       <hr class="sea-rule mb-5 mt-2" />
       <div class="space-y-3">
         <div class="glass rounded-2xl p-3 flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-3">
@@ -363,7 +365,7 @@
 
     <!-- ACTIVITY MAP -->
     <section id="map" class="page w-full max-w-6xl mx-auto px-3 py-4 md:px-4 md:py-6">
-      <h2 class="sea-head display text-2xl md:text-3xl font-normal">Reef Map</h2>
+      <h2 class="sea-head display text-xl md:text-2xl font-normal">Reef Map</h2>
       <a href="./assets/Map.svg" class="on-wash no-print text-sm font-semibold underline mt-1 inline-block text-[rgb(var(--ink-soft))]">Open full-size</a>
       <hr class="sea-rule mb-5 mt-2" />
       <figure class="glass rounded-3xl overflow-hidden p-2 sm:p-3 w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl mx-auto">
@@ -374,7 +376,7 @@
 
     <!-- ACTIVITIES -->
     <section id="activity-sponsors" class="page w-full max-w-6xl mx-auto px-3 py-4 md:px-4 md:py-6">
-      <h2 class="sea-head display text-2xl md:text-3xl font-normal">Activities &amp; Sponsors</h2>
+      <h2 class="sea-head display text-xl md:text-2xl font-normal">Activities &amp; Sponsors</h2>
       <hr class="sea-rule mb-5 mt-2" />
       <div class="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
         <div class="glass rounded-2xl p-4">
@@ -399,7 +401,7 @@
 
     <!-- SILENT AUCTION -->
     <section id="auction" class="page w-full max-w-6xl mx-auto px-3 py-4 md:px-4 md:py-6">
-      <h2 class="sea-head display text-2xl md:text-3xl font-normal">Silent Auction &amp; Raffle</h2>
+      <h2 class="sea-head display text-xl md:text-2xl font-normal">Silent Auction &amp; Raffle</h2>
       <hr class="sea-rule mb-5 mt-2" />
       <div class="space-y-4 leading-relaxed text-sm sm:text-base">
         <div>
