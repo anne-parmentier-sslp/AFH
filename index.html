@@ -112,7 +112,16 @@
        above it. Swimmers use a viewport-HEIGHT percentage, clamped so they can
        never sink into whatever is below them — a percentage and a fixed offset
        drifting past each other is what collided on short, wide windows. */
-    .decor{ --floor: max(139px, calc(100vw / 6.49)); }
+    /* --sand-min is the one place the sea floor's depth is set. The sand image
+       reads it as a min-width and --floor derives its height from the same
+       number, so the bank and everything resting on it can't drift apart. */
+    .decor{
+      --sand-min: 620px;
+      --floor: calc(max(var(--sand-min), 100vw) / 6.49);
+    }
+    @media (min-width: 640px){ .decor{ --sand-min: 780px; } }
+    @media (min-width: 768px){ .decor{ --sand-min: 0px;   } }
+    .d-sand{ min-width: var(--sand-min); }
     .d-octopus{ bottom: calc(var(--floor) + 4px); left:.75rem; }
     .d-girl   { bottom: calc(var(--floor) + 8px); right:1rem; }
     .d-boy    { top: clamp(180px, 40%, calc(100vh - var(--floor) - 230px)); left:.25rem; }
@@ -176,7 +185,7 @@
          a phone — too shallow to bury anything. min-w keeps a usable sand bank at
          every width (it just crops wider than the viewport), and the floor pieces
          anchor tighter to the bottom on small screens so they stay buried. -->
-    <img src="./assets/sea/sand.png"     alt="" class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-full min-w-[900px] max-w-none" />
+    <img src="./assets/sea/sand.png"     alt="" class="d-sand absolute -bottom-2 left-1/2 -translate-x-1/2 w-full max-w-none" />
     <img src="./assets/sea/kelp.png"     alt="" class="absolute bottom-2 sm:bottom-5 md:bottom-6 left-3 sm:left-4 w-8 sm:w-14 md:w-16 opacity-90" />
     <img src="./assets/sea/coral.png"    alt="" class="absolute bottom-2 sm:bottom-5 md:bottom-6 left-16 sm:left-20 w-10 sm:w-16 md:w-20 opacity-90" />
     <img src="./assets/sea/crab.png"     alt="" class="absolute bottom-1 sm:bottom-4 right-6 w-9 sm:w-14 md:w-16" />
