@@ -6,181 +6,307 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <title>Adoption is Out of This World – AFH Picnic Program</title>
-  <meta name="description" content="Mobile program for the Adoption is Out of This World picnic: welcome, sponsors, activity map, activities, silent auction." />
+  <title>Adoption: A Deep Sea of Love – AFH Picnic Program</title>
+  <meta name="description" content="Mobile program for the Celebration of Adoption Picnic: welcome, sponsors, reef map, activities, silent auction." />
 
-  <!-- Social preview (uses the hero graphic asset) -->
+  <!-- Social preview -->
   <meta property="og:title" content="Adoptive Families of Houston – Celebration of Adoption Picnic" />
   <meta property="og:description" content="Explore activities, map, sponsors, and silent auction." />
-  <meta property="og:image" content="https://anne-parmentier-sslp.github.io/AFH/assets/hero-art.png?v=2" />
+  <meta property="og:image" content="https://anne-parmentier-sslp.github.io/AFH/assets/sea/logo-stacked.png?v=3" />
   <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#dceef2" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+
+  <!--
+    ADOBE FONTS — brand typefaces from the 2026 print material.
+    pinecone-mvb-rough1  → display headlines       (400 roman only)
+    chandler-42-regular  → subheads & sponsor names (400/800, roman + italic)
+    Fredoka/Nunito remain as fallbacks if the kit ever fails to load.
+  -->
+  <link rel="preconnect" href="https://use.typekit.net" crossorigin>
+  <link rel="stylesheet" href="https://use.typekit.net/vot6zil.css">
+
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root{
-      --brand-1: 24 34 72;   /* deep space blue */
-      --accent: 255 202 70;  /* starlight gold */
-      --pink: 255 140 220;   /* cosmic pink */
-    }
-    body{ font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Noto Sans; }
-    h1,h2,h3,.orbitron{ font-family: Orbitron, Inter, ui-sans-serif; letter-spacing:.02em; }
+      /* Brand faces first, Google fallbacks second. Safe to ship before the kit exists. */
+      --font-display: "pinecone-mvb-rough1", Fredoka, ui-rounded, system-ui, sans-serif;
+      --font-subhead: "chandler-42-regular", Fredoka, ui-rounded, system-ui, sans-serif;
+      --font-body:    Nunito, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 
-    /* Gentle motion */
-    @keyframes floatY { 0%{ transform: translateY(0) } 50%{ transform: translateY(-6px) } 100%{ transform: translateY(0) } }
-    @keyframes driftX { 0%{ transform: translateX(0) } 50%{ transform: translateX(8px) } 100%{ transform: translateX(0) } }
-    @keyframes twinkle { 0%,100%{ opacity:.65 } 50%{ opacity:.9 } }
+      --ink:      46 49 146;   /* deep navy — headings, from the printed banner */
+      --ink-soft: 62 111 168;  /* mid blue — body copy */
+      --wave:    122 173 213;  /* light blue — rules, bullets */
+      --sand:    224 165  38;  /* watercolor sand gold */
+      --coral:   226 124 120;  /* coral pink */
+      --kelp:     92 163 106;  /* seagrass green */
+      --plum:    139 109 184;  /* octopus purple */
+      --foam:    220 238 242;  /* pale aqua wash */
+    }
+    body{
+      font-family: var(--font-body);
+      color: rgb(var(--ink-soft));
+      background: rgb(var(--foam));
+    }
+
+    /* Pinecone Rough is a single-weight textured face — display sizes only. */
+    h1, h2, .display{ font-family: var(--font-display); font-weight: 400; letter-spacing:.01em; }
+
+    /* Chandler 42 for short labels: tier names, times, activity titles. */
+    h3, .chandler{ font-family: var(--font-subhead); letter-spacing:.01em; }
+
+    /* Sponsor names are set in Chandler Oblique on the printed banner. */
+    .sponsor-name{ font-family: var(--font-subhead); font-style: italic; }
+
+    /* Section headings echo the printed signage: navy caps over a light rule.
+       They sit straight on the watercolor with sea life drifting behind, so a
+       soft white halo lifts them off it — Pinecone's rough edges need the help
+       more than a solid face would. */
+    h1, h2, h3, .display, .on-wash{
+      text-shadow:
+        0 0  4px rgb(255 255 255 / .95),
+        0 0 12px rgb(255 255 255 / .9),
+        0 0 24px rgb(255 255 255 / .65);
+    }
+    .sea-head{
+      color: rgb(var(--ink));
+      text-transform: uppercase;
+      letter-spacing:.04em;
+    }
+    @media print{
+      h1, h2, h3, .display, .on-wash{ text-shadow:none !important; }
+    }
+    .sea-rule{
+      border:0; height:2px; border-radius:2px;
+      background: linear-gradient(90deg, rgb(var(--wave)/.85), rgb(var(--wave)/0));
+    }
+
+    /* Frosted "sea glass" cards over the watercolor ground */
+    .glass{
+      background: rgb(255 255 255 / .62);
+      border: 1px solid rgb(255 255 255 / .9);
+      box-shadow: 0 6px 20px -10px rgb(var(--ink) / .35);
+      backdrop-filter: blur(2px);
+    }
+
+    /* Asterisk bullet used across the 2026 print pieces.
+       Chandler's own "*" is the real glyph — U+2733 isn't in the font and would
+       silently fall back to a system face. It sits high in the em box and is
+       drawn small, hence the size bump and offset. */
+    .star-bullet > li{ position:relative; padding-left:1.5rem; }
+    .star-bullet > li::before{
+      content:"*"; position:absolute; left:0; top:-.14em;
+      font-family: var(--font-subhead);
+      font-style: normal;
+      font-size:1.6em;
+      line-height:1;
+      color: rgb(var(--wave));
+    }
+
+    /* ---- Sea-life layer ----
+       The sand is 6.49:1 and floored at 900px wide, so its height follows the
+       viewport WIDTH: --floor is the sea-floor line. Bottom dwellers sit just
+       above it. Swimmers use a viewport-HEIGHT percentage, clamped so they can
+       never sink into whatever is below them — a percentage and a fixed offset
+       drifting past each other is what collided on short, wide windows. */
+    .decor{ --floor: max(139px, calc(100vw / 6.49)); }
+    .d-octopus{ bottom: calc(var(--floor) + 4px); left:.75rem; }
+    .d-girl   { bottom: calc(var(--floor) + 8px); right:1rem; }
+    .d-boy    { top: clamp(180px, 40%, calc(100vh - var(--floor) - 230px)); left:.25rem; }
+    .d-turtle { top: clamp(160px, 46%, calc(100vh - var(--floor) - 210px)); right:.5rem; }
+    .d-fish   { top: clamp(100px, 24%, calc(100vh - var(--floor) - 380px)); left:.5rem; }
+
+    /* ---- Rising bubbles ---- */
+    .bubbles{ position:fixed; inset:0; z-index:-10; pointer-events:none; overflow:hidden; }
+    .bubbles span{
+      position:absolute; bottom:-140px; display:block;
+      background-repeat:no-repeat; background-size:contain; background-position:center;
+      opacity:0; animation: rise linear infinite;
+    }
+    @keyframes rise{
+      0%   { transform: translate3d(0,0,0) scale(.85); opacity:0; }
+      8%   { opacity:.75; }
+      50%  { transform: translate3d(22px, -52vh, 0) scale(1); }
+      85%  { opacity:.6; }
+      100% { transform: translate3d(-14px, -112vh, 0) scale(1.08); opacity:0; }
+    }
+
+    /* Gentle drift for the sea life */
+    @keyframes floatY { 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(-10px) } }
+    @keyframes swim   { 0%,100%{ transform: translateX(0) rotate(0) } 50%{ transform: translateX(14px) rotate(-2deg) } }
     .float-slow{ animation: floatY 9s ease-in-out infinite; }
-    .drift-slow{ animation: driftX 14s ease-in-out infinite; }
-    .twinkle-slow{ animation: twinkle 6s ease-in-out infinite; }
+    .swim-slow { animation: swim 16s ease-in-out infinite; }
 
-    /* Respect reduced motion */
     @media (prefers-reduced-motion: reduce){
-      .float-slow, .drift-slow, .twinkle-slow{ animation: none !important; }
+      .float-slow, .swim-slow{ animation:none !important; }
+      .bubbles span{ animation:none !important; opacity:.4 !important; }
     }
 
-    /* Print styles */
+    /* Print */
     @media print{
       .no-print{ display:none !important; }
-      .page{ box-shadow:none !important; }
-      a[href]::after{ content: " (" attr(href) ")"; font-size: .8em; }
-      body{ color:#000; }
-      .bg-layer{ display:none; }
+      .bg-layer, .bubbles{ display:none !important; }
+      .glass{ background:#fff !important; box-shadow:none !important; border-color:#cbd5e1 !important; backdrop-filter:none !important; }
+      a[href]::after{ content:" (" attr(href) ")"; font-size:.8em; }
+      body{ color:#000; background:#fff; }
     }
   </style>
 </head>
-  <body class="text-white relative min-h-screen">
-  <!-- Full-page background image -->
-  <div class="fixed inset-0 -z-50 bg-[url('./assets/background.svg')] bg-cover bg-center"></div>
+<body class="relative min-h-screen">
 
-  <!-- Floating decorative layer (under content) -->
-  <div class="bg-layer pointer-events-none select-none fixed inset-0 -z-10 overflow-hidden">
-  <img src="./assets/stars.svg" alt="" class="absolute inset-0 w-full max-w-none twinkle-slow opacity-70" />
-  <!--<img src="./assets/kid1.svg" alt="" class="absolute top-1/2 right-0 md:right-4 -translate-y-3/4 w-16 sm:w-20 md:w-20 float-slow"/>-->
-  <img src="./assets/kid2.svg" alt="" class="absolute bottom-2 right-2 w-16 sm:w-24 md:w-24 drift-slow"/>
-  <img src="./assets/kid3.svg" alt="" class="absolute top-16 left-3/4 -translate-x-3/4 w-16 sm:w-20 md:w-20 float-slow"/>
-  <img src="./assets/spaceship.svg" alt="" class="absolute top-40 left-2 w-10 sm:w-16 md:w-20 drift-slow"/>
+  <!-- Watercolor wash background -->
+  <div class="fixed inset-0 -z-50 bg-[url('./assets/sea/background.jpg')] bg-cover bg-center"></div>
+
+  <!-- Rising bubbles (populated by script) -->
+  <div class="bubbles" aria-hidden="true"></div>
+
+  <!-- Sea life layer -->
+  <div class="bg-layer decor pointer-events-none select-none fixed inset-0 -z-10 overflow-hidden" aria-hidden="true">
+    <img src="./assets/sea/whale.png"      alt="" class="absolute top-24 -right-6 w-28 sm:w-40 md:w-52 opacity-90 swim-slow" />
+    <img src="./assets/sea/fish.png"       alt="" class="d-fish    absolute w-14 sm:w-20 md:w-24 opacity-80 swim-slow" />
+    <img src="./assets/sea/turtle.png"     alt="" class="d-turtle  absolute w-16 sm:w-24 md:w-28 opacity-80 swim-slow" />
+    <img src="./assets/sea/diver-boy.png"  alt="" class="d-boy     absolute w-16 sm:w-24 md:w-28 opacity-90 float-slow" />
+    <img src="./assets/sea/diver-girl.png" alt="" class="d-girl    absolute w-16 sm:w-24 md:w-28 opacity-90 float-slow" />
+    <img src="./assets/sea/octopus.png"    alt="" class="d-octopus absolute w-14 sm:w-20 md:w-24 opacity-90 float-slow" />
+
+    <!-- Sea floor. The sand is 6.49:1, so at w-full it renders only ~58px tall on
+         a phone — too shallow to bury anything. min-w keeps a usable sand bank at
+         every width (it just crops wider than the viewport), and the floor pieces
+         anchor tighter to the bottom on small screens so they stay buried. -->
+    <img src="./assets/sea/sand.png"     alt="" class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-full min-w-[900px] max-w-none" />
+    <img src="./assets/sea/kelp.png"     alt="" class="absolute bottom-2 sm:bottom-5 md:bottom-6 left-3 sm:left-4 w-8 sm:w-14 md:w-16 opacity-90" />
+    <img src="./assets/sea/coral.png"    alt="" class="absolute bottom-2 sm:bottom-5 md:bottom-6 left-16 sm:left-20 w-10 sm:w-16 md:w-20 opacity-90" />
+    <img src="./assets/sea/crab.png"     alt="" class="absolute bottom-1 sm:bottom-4 right-6 w-9 sm:w-14 md:w-16" />
+    <img src="./assets/sea/starfish.png" alt="" class="absolute bottom-1 sm:bottom-3 left-1/2 w-7 sm:w-12 md:w-14" />
+    <img src="./assets/sea/shell.png"    alt="" class="absolute bottom-1 sm:bottom-4 left-1/3 w-7 sm:w-11 md:w-12" />
   </div>
+
   <!-- Top Bar -->
-  <header class="no-print sticky top-0 z-50 backdrop-blur bg-black/40 border-b border-white/10">
-    <div class="max-w-6xl mx-auto px-2 py-2 flex flex-col gap-2">
+  <header class="no-print sticky top-0 z-50 backdrop-blur bg-white/70 border-b border-white shadow-sm">
+    <div class="max-w-6xl mx-auto px-3 py-2 flex flex-col gap-2">
       <div class="flex items-center justify-between w-full">
         <div class="flex items-center gap-2">
-          <img src="./assets/logo.svg" alt="Adoptive Families of Houston" class="h-[1.75rem] w-auto" style="height:1.75rem;" />
-          <span class="orbitron text-lg font-bold whitespace-nowrap">Picnic Program</span>
+          <img src="./assets/sea/logo-long.png" alt="Adoptive Families of Houston" class="h-7 w-auto" />
+          <span class="chandler text-lg font-medium whitespace-nowrap text-[rgb(var(--ink))] hidden sm:inline">Picnic Program</span>
         </div>
         <div class="flex items-center gap-2">
-          <nav id="main-menu" aria-label="Main navigation" class="hidden sm:flex flex-row flex-wrap gap-2 sm:gap-4 text-sm">
-            <a class="hover:underline" href="#welcome">Welcome</a>
-            <a class="hover:underline" href="#sponsors">Sponsors</a>
-            <a class="hover:underline" href="#map">Activity Map</a>
-            <a class="hover:underline" href="#activity-sponsors">Activities</a>
-            <a class="hover:underline" href="#auction">Silent Auction</a>
+          <nav id="main-menu" aria-label="Main navigation" class="hidden sm:flex flex-row flex-wrap gap-2 sm:gap-4 text-sm font-semibold text-[rgb(var(--ink-soft))]">
+            <a class="hover:text-[rgb(var(--ink))] hover:underline" href="#welcome">Welcome</a>
+            <a class="hover:text-[rgb(var(--ink))] hover:underline" href="#sponsors">Sponsors</a>
+            <a class="hover:text-[rgb(var(--ink))] hover:underline" href="#map">Reef Map</a>
+            <a class="hover:text-[rgb(var(--ink))] hover:underline" href="#activity-sponsors">Activities</a>
+            <a class="hover:text-[rgb(var(--ink))] hover:underline" href="#auction">Silent Auction</a>
           </nav>
-          <button id="share-btn" class="ml-2 p-2 rounded focus:outline-none focus:ring-2 focus:ring-white bg-white/10 hover:bg-white/20 text-white flex items-center gap-1" aria-label="Share this page" title="Share this page">
+          <button id="share-btn" class="ml-1 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[rgb(var(--wave))] bg-white/70 hover:bg-white border border-white text-[rgb(var(--ink))] flex items-center gap-1" aria-label="Share this page" title="Share this page">
             <span id="share-icon"></span>
-            <span class="hidden sm:inline">Share</span>
+            <span class="hidden sm:inline text-sm font-semibold">Share</span>
           </button>
-          <button id="menu-toggle" class="sm:hidden ml-2 p-2 rounded focus:outline-none focus:ring-2 focus:ring-white" aria-label="Open menu">
-            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <button id="menu-toggle" class="sm:hidden p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[rgb(var(--wave))] text-[rgb(var(--ink))]" aria-label="Open menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
             </svg>
           </button>
         </div>
       </div>
-  <nav id="main-menu-mobile" aria-label="Mobile navigation" class="w-full flex flex-col gap-2 text-sm absolute top-16 left-0 bg-black/90 p-4 z-50 transition-all duration-200 hidden sm:hidden">
+      <nav id="main-menu-mobile" aria-label="Mobile navigation" class="w-full flex flex-col gap-2 text-sm font-semibold absolute top-16 left-0 bg-white/95 backdrop-blur p-4 z-50 shadow-lg text-[rgb(var(--ink))] transition-all duration-200 hidden sm:hidden">
         <a class="hover:underline" href="#welcome">Welcome</a>
         <a class="hover:underline" href="#sponsors">Sponsors</a>
-        <a class="hover:underline" href="#map">Activity Map</a>
+        <a class="hover:underline" href="#map">Reef Map</a>
         <a class="hover:underline" href="#activity-sponsors">Activities</a>
         <a class="hover:underline" href="#auction">Silent Auction</a>
       </nav>
-
     </div>
   </header>
 
   <main>
-    <!-- Large logo at top of main -->
-
-  <section id="welcome" class="page w-full max-w-6xl mx-auto px-2 py-4 md:px-4 md:py-6">
-    <div class="w-full flex justify-center py-6">
-  <img src="./assets/logo.svg" alt="Adoptive Families of Houston" class="h-24 w-auto" />
-    </div>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 items-center">
-        <div>
-        <p class="text-sm uppercase tracking-wide text-white/80 text-center">Welcomes You To</p>
-  <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold mt-1 text-center">
-
-            <span class="block text-center">The 14th Annual<br>Celebration of Adoption Picnic</span>
-          </h1>
-        <object type="image/svg+xml" data="./assets/title.svg" aria-label="Adoption is Out of This World"
-                    class="w-full h-auto max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl mx-auto pt-4 px-4" style="display:block;width:100%;height:auto;max-width:90vw;">
-            Adoption is Out of This World
-          </object>
-          <ul class="mt-4 text-white/90 space-y-1">
-            <li><strong>Date:</strong> <span id="event-date">October 26, 2025</span></li>
-            <li><strong>Time:</strong> <span id="event-time">3:00 PM - 6:00 PM</span></li>
-            <li><strong>Location:</strong> <span id="event-location">Silver Sycamore</span></li>
-          </ul>
-          <div class="mt-6 flex flex-wrap gap-3">
-            <a href="#schedule" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15">View Schedule</a>
-            <a href="#map" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15">View Activity Map</a>
-            <a href="#auction" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[rgb(var(--accent))] text-black font-semibold">Silent Auction</a>
-            <a href="https://www.adoptivefamiliesofhouston.org/packet/336316735#:~:text=0.00-,Raffle%20Tickets,-1%20Raffle%20Ticket" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-pink-500 hover:bg-pink-400 text-white font-semibold shadow">Buy Raffle Tickets</a>
-          </div>
-        </div>
+    <!-- WELCOME -->
+    <section id="welcome" class="page w-full max-w-6xl mx-auto px-3 py-4 md:px-4 md:py-6">
+      <div class="w-full flex justify-center pt-6 pb-2">
+        <img src="./assets/sea/logo-stacked.png" alt="Adoptive Families of Houston" class="h-28 sm:h-32 w-auto" />
       </div>
 
+      <div class="glass rounded-3xl p-5 sm:p-8 max-w-3xl mx-auto text-center">
+        <p class="text-xs sm:text-sm uppercase tracking-[.18em] font-bold text-[rgb(var(--wave))]">Welcomes You To</p>
+        <h1 class="display text-2xl sm:text-3xl md:text-4xl font-normal mt-2 text-[rgb(var(--ink))]">
+          The 15th Annual<br>Celebration of Adoption Picnic
+        </h1>
+
+        <!-- PLACEHOLDER: swap for the final 2026 theme headline / title artwork -->
+        <p class="display mt-5 text-xl sm:text-2xl md:text-3xl font-normal text-[rgb(var(--coral))]">
+          Adoption: A Deep Sea of Love
+        </p>
+
+        <hr class="sea-rule my-5 max-w-xs mx-auto" style="background:linear-gradient(90deg,rgb(var(--wave)/0),rgb(var(--wave)/.85),rgb(var(--wave)/0))" />
+
+        <ul class="text-[rgb(var(--ink-soft))] space-y-1 text-base sm:text-lg">
+          <li><strong class="text-[rgb(var(--ink))]">Date:</strong> <span id="event-date">October 26, 2025</span></li>
+          <li><strong class="text-[rgb(var(--ink))]">Time:</strong> <span id="event-time">3:00 PM – 6:00 PM</span></li>
+          <li><strong class="text-[rgb(var(--ink))]">Location:</strong> <span id="event-location">Silver Sycamore</span></li>
+        </ul>
+
+        <div class="mt-6 flex flex-wrap gap-3 justify-center">
+          <a href="#schedule" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 hover:bg-white border border-[rgb(var(--wave)/.5)] text-[rgb(var(--ink))] font-semibold">View Schedule</a>
+          <a href="#map" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 hover:bg-white border border-[rgb(var(--wave)/.5)] text-[rgb(var(--ink))] font-semibold">View Reef Map</a>
+          <a href="#auction" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[rgb(var(--sand))] hover:brightness-105 text-white font-bold shadow">Silent Auction</a>
+          <a href="https://www.adoptivefamiliesofhouston.org/packet/336316735#:~:text=0.00-,Raffle%20Tickets,-1%20Raffle%20Ticket" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[rgb(var(--coral))] hover:brightness-105 text-white font-bold shadow">Buy Raffle Tickets</a>
+        </div>
+      </div>
+    </section>
+
     <!-- SPONSORS -->
-  <section id="sponsors" class="page w-full max-w-6xl mx-auto px-2 py-4 md:px-4 md:py-6">
-  <h2 class="text-2xl md:text-3xl font-extrabold mb-4">Stellar Sponsors</h2>
-  <div class="mb-4 text-lg font-semibold text-white/90">Thank you for your <span style="white-space:nowrap">Out-Of-This-World</span> support</div>
-      <div class="space-y-6">
-        <div class="rounded-xl bg-gradient-to-r from-yellow-400/30 to-yellow-200/10 border-l-4 border-yellow-300 p-4">
-          <h3 class="orbitron text-lg md:text-xl font-bold mb-2 text-yellow-300">Presenting</h3>
-          <ul class="list-none space-y-1 text-yellow-100">
-            <li><span class="mr-2">⭐</span>Anonymous</li>
-            <li><span class="mr-2">⭐</span>Anonymous</li>
-            <li><span class="mr-2">⭐</span>Kathie Otte et al.</li>
+    <section id="sponsors" class="page w-full max-w-6xl mx-auto px-3 py-4 md:px-4 md:py-6">
+      <h2 class="sea-head display text-2xl md:text-3xl font-normal">Oceans of Thanks</h2>
+      <p class="on-wash mt-1 mb-3 text-lg font-semibold italic text-[rgb(var(--ink-soft))]">To our amazing sponsors — thank you for your ocean-deep support</p>
+      <hr class="sea-rule mb-5" />
+
+      <div class="space-y-4">
+        <div class="glass rounded-2xl border-l-4 border-l-[rgb(var(--sand))] p-4">
+          <h3 class="chandler text-lg md:text-xl font-medium mb-2 text-[rgb(var(--sand))]">Presenting</h3>
+          <ul class="star-bullet sponsor-name space-y-1 text-[rgb(var(--ink-soft))]">
+            <li>Anonymous</li>
+            <li>Anonymous</li>
+            <li>Kathie Otte et al.</li>
           </ul>
         </div>
-        <div class="rounded-xl bg-gradient-to-r from-white/30 to-white/10 border-l-4 border-white p-4">
-          <h3 class="orbitron text-lg md:text-xl font-bold mb-2 text-white">Platinum</h3>
-          <ul class="list-none space-y-1 text-white">
-            <li><span class="mr-2">⭐</span>The Casey Family</li>
+        <div class="glass rounded-2xl border-l-4 border-l-[rgb(var(--wave))] p-4">
+          <h3 class="chandler text-lg md:text-xl font-medium mb-2 text-[rgb(var(--ink))]">Platinum</h3>
+          <ul class="star-bullet sponsor-name space-y-1 text-[rgb(var(--ink-soft))]">
+            <li>The Casey Family</li>
           </ul>
         </div>
-        <div class="rounded-xl bg-gradient-to-r from-gray-400/30 to-gray-200/10 border-l-4 border-gray-300 p-4">
-          <h3 class="orbitron text-lg md:text-xl font-bold mb-2 text-gray-200">Silver</h3>
-          <ul class="grid md:grid-cols-2 gap-2 text-gray-100 list-none">
-            <li><span class="mr-2">⭐</span>Kari Bird State Farm Insurance</li>
-            <li><span class="mr-2">⭐</span>Copper State Rubber</li>
+        <div class="glass rounded-2xl border-l-4 border-l-[rgb(var(--plum))] p-4">
+          <h3 class="chandler text-lg md:text-xl font-medium mb-2 text-[rgb(var(--plum))]">Silver</h3>
+          <ul class="star-bullet sponsor-name grid md:grid-cols-2 gap-x-6 gap-y-1 text-[rgb(var(--ink-soft))]">
+            <li>Kari Bird State Farm Insurance</li>
+            <li>Copper State Rubber</li>
           </ul>
         </div>
-        <div class="rounded-xl bg-gradient-to-r from-amber-700/30 to-amber-400/10 border-l-4 border-amber-500 p-4">
-          <h3 class="orbitron text-lg md:text-xl font-bold mb-2 text-amber-300">Bronze</h3>
-          <ul class="list-none space-y-1 text-amber-100">
-            <li><span class="mr-2">⭐</span>Palmer Dental Group of Houston</li>
-            <li><span class="mr-2">⭐</span>Raju Adwaney &amp; Abhishek Kansara</li>
+        <div class="glass rounded-2xl border-l-4 border-l-[rgb(var(--coral))] p-4">
+          <h3 class="chandler text-lg md:text-xl font-medium mb-2 text-[rgb(var(--coral))]">Bronze</h3>
+          <ul class="star-bullet sponsor-name space-y-1 text-[rgb(var(--ink-soft))]">
+            <li>Palmer Dental Group of Houston</li>
+            <li>Raju Adwaney &amp; Abhishek Kansara</li>
           </ul>
         </div>
-        <div class="rounded-xl bg-gradient-to-r from-blue-400/30 to-blue-200/10 border-l-4 border-blue-300 p-4">
-          <h3 class="orbitron text-lg md:text-xl font-bold mb-2 text-blue-200">Friends of AFH</h3>
-          <ul class="list-none space-y-1 text-blue-100">
-            <li><span class="mr-2">⭐</span>Chester and Aysha Urban</li>
+        <div class="glass rounded-2xl border-l-4 border-l-[rgb(var(--kelp))] p-4">
+          <h3 class="chandler text-lg md:text-xl font-medium mb-2 text-[rgb(var(--kelp))]">Friends of AFH</h3>
+          <ul class="star-bullet sponsor-name space-y-1 text-[rgb(var(--ink-soft))]">
+            <li>Chester and Aysha Urban</li>
           </ul>
         </div>
       </div>
     </section>
 
     <!-- SCHEDULE -->
-    <section id="schedule" class="page w-full max-w-6xl mx-auto px-2 py-4 md:px-4 md:py-6">
-  <h2 class="text-2xl md:text-3xl font-extrabold mb-4">Launch Sequence</h2>
-      <div class="space-y-3 text-white/90">
-        <div class="rounded-xl bg-white/10 border border-white/20 p-3 flex flex-col sm:flex-row sm:items-start gap-2">
-          <span class="font-bold w-24 flex-shrink-0">3:00 PM</span>
+    <section id="schedule" class="page w-full max-w-6xl mx-auto px-3 py-4 md:px-4 md:py-6">
+      <h2 class="sea-head display text-2xl md:text-3xl font-normal">Schedule of Events</h2>
+      <hr class="sea-rule mb-5 mt-2" />
+      <div class="space-y-3">
+        <div class="glass rounded-2xl p-3 flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-3">
+          <span class="chandler font-medium w-24 flex-shrink-0 text-[rgb(var(--ink))]">3:00 PM</span>
           <div>
             Check-in Begins<br>
             Purchase Raffle Tickets<br>
@@ -188,104 +314,98 @@
             Dippin’ Dots Open
           </div>
         </div>
-        <div class="rounded-xl bg-white/10 border border-white/20 p-3 flex flex-col sm:flex-row sm:items-start gap-2">
-          <span class="font-bold w-24 flex-shrink-0">4:00 PM</span>
-          <div>
-            Board Member Picture
-          </div>
+        <div class="glass rounded-2xl p-3 flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-3">
+          <span class="chandler font-medium w-24 flex-shrink-0 text-[rgb(var(--ink))]">4:00 PM</span>
+          <div>Board Member Picture</div>
         </div>
-        <div class="rounded-xl bg-white/10 border border-white/20 p-3 flex flex-col sm:flex-row sm:items-start gap-2">
-          <span class="font-bold w-24 flex-shrink-0">4:30 PM</span>
-          <div>
-            Food lines open
-          </div>
+        <div class="glass rounded-2xl p-3 flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-3">
+          <span class="chandler font-medium w-24 flex-shrink-0 text-[rgb(var(--ink))]">4:30 PM</span>
+          <div>Food lines open</div>
         </div>
-        <div class="rounded-xl bg-white/10 border border-white/20 p-3 flex flex-col sm:flex-row sm:items-start gap-2">
-          <span class="font-bold w-24 flex-shrink-0">5:15 PM</span>
+        <div class="glass rounded-2xl p-3 flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-3">
+          <span class="chandler font-medium w-24 flex-shrink-0 text-[rgb(var(--ink))]">5:15 PM</span>
           <div>
             Announcements<br>
             Acknowledgments<br>
             Last call for Raffle
           </div>
         </div>
-        <div class="rounded-xl bg-white/10 border border-white/20 p-3 flex flex-col sm:flex-row sm:items-start gap-2">
-          <span class="font-bold w-24 flex-shrink-0">5:25 PM</span>
+        <div class="glass rounded-2xl p-3 flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-3">
+          <span class="chandler font-medium w-24 flex-shrink-0 text-[rgb(var(--ink))]">5:25 PM</span>
           <div>
             Silent Auction Close<br>
             Raffle Close
           </div>
         </div>
-        <div class="rounded-xl bg-white/10 border border-white/20 p-3 flex flex-col sm:flex-row sm:items-start gap-2">
-          <span class="font-bold w-24 flex-shrink-0">5:30 PM</span>
+        <div class="glass rounded-2xl p-3 flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-3">
+          <span class="chandler font-medium w-24 flex-shrink-0 text-[rgb(var(--ink))]">5:30 PM</span>
           <div>
             Food lines close<br>
             Raffle Drawing (winners notified via text)<br>
             Silent Auction (winners notified via text)
           </div>
         </div>
-        <div class="rounded-xl bg-white/10 border border-white/20 p-3 flex flex-col sm:flex-row sm:items-start gap-2">
-          <span class="font-bold w-24 flex-shrink-0">6:00 PM</span>
-          <div>
-            Event ends
-          </div>
+        <div class="glass rounded-2xl p-3 flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-3">
+          <span class="chandler font-medium w-24 flex-shrink-0 text-[rgb(var(--ink))]">6:00 PM</span>
+          <div>Event ends</div>
         </div>
       </div>
     </section>
 
     <!-- ACTIVITY MAP -->
-  <section id="map" class="page w-full max-w-6xl mx-auto px-2 py-4 md:px-4 md:py-6">
-  <div class="mb-2 sm:mb-3">
-  <h2 class="text-2xl md:text-3xl font-extrabold mb-4">Universe Map</h2>
-    <a href="./assets/Map.svg" class="no-print text-sm underline mt-1 block">Open full-size</a>
-  </div>
-      <figure class="rounded-2xl overflow-hidden border border-white/10 bg-white/5 p-2 sm:p-3 w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl mx-auto">
-  <img src="./assets/Map.svg" alt="Map of activities with named areas" class="w-full h-auto mx-auto object-contain" />
-  <figcaption class="p-2 sm:p-3 text-white/70 text-xs sm:text-sm">Areas are named and correspond to the activity list below. Use the "Open full-size" link above to zoom in.</figcaption>
+    <section id="map" class="page w-full max-w-6xl mx-auto px-3 py-4 md:px-4 md:py-6">
+      <h2 class="sea-head display text-2xl md:text-3xl font-normal">Reef Map</h2>
+      <a href="./assets/Map.svg" class="on-wash no-print text-sm font-semibold underline mt-1 inline-block text-[rgb(var(--ink-soft))]">Open full-size</a>
+      <hr class="sea-rule mb-5 mt-2" />
+      <figure class="glass rounded-3xl overflow-hidden p-2 sm:p-3 w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl mx-auto">
+        <img src="./assets/Map.svg" alt="Map of activities with named areas" class="w-full h-auto mx-auto object-contain rounded-2xl" />
+        <figcaption class="p-2 sm:p-3 text-xs sm:text-sm text-[rgb(var(--ink-soft))]">Areas are named and correspond to the activity list below. Use the “Open full-size” link above to zoom in.</figcaption>
       </figure>
     </section>
 
     <!-- ACTIVITIES -->
-  <section id="activity-sponsors" class="page w-full max-w-6xl mx-auto px-2 py-4 md:px-4 md:py-6">
-  <h2 class="text-2xl md:text-3xl font-extrabold mb-4">Activities & Sponsors</h2>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-4">
-    <div class="bg-white/5 border border-white/10 rounded-xl p-4">
-      <div class="font-semibold">Petting Zoo &amp; Pony Rides</div>
-      <div class="text-sm text-white/80">Sponsored by: <span class="font-medium">Brett &amp; Dawn Berly</span></div>
-    </div>
-    <div class="bg-white/5 border border-white/10 rounded-xl p-4">
-      <div class="font-semibold">Balloons &amp; Face Painting</div>
-      <div class="text-sm text-white/80">Sponsored by: <span class="font-medium">Susan &amp; David Motley</span></div>
-    </div>
-    <div class="bg-white/5 border border-white/10 rounded-xl p-4">
-      <div class="font-semibold">Selfie Station</div>
-      <div class="text-sm text-white/80">Sponsored by: <span class="font-medium">Michael's Shell</span>
-        <img src="./assets/shell-logo.png" alt="Shell Logo" class="h-10 w-auto inline-block align-middle" /></div>
-    </div>
-    <div class="bg-white/5 border border-white/10 rounded-xl p-4">
-      <div class="font-semibold">Obstacle Course</div>
-      <div class="text-sm text-white/80 flex items-center gap-2">Sponsored by: <span class="font-medium">The de Roode Family</span>
+    <section id="activity-sponsors" class="page w-full max-w-6xl mx-auto px-3 py-4 md:px-4 md:py-6">
+      <h2 class="sea-head display text-2xl md:text-3xl font-normal">Activities &amp; Sponsors</h2>
+      <hr class="sea-rule mb-5 mt-2" />
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
+        <div class="glass rounded-2xl p-4">
+          <div class="chandler font-medium text-[rgb(var(--ink))]">Petting Zoo &amp; Pony Rides</div>
+          <div class="text-sm">Sponsored by: <span class="sponsor-name font-normal">Brett &amp; Dawn Berly</span></div>
+        </div>
+        <div class="glass rounded-2xl p-4">
+          <div class="chandler font-medium text-[rgb(var(--ink))]">Balloons &amp; Face Painting</div>
+          <div class="text-sm">Sponsored by: <span class="sponsor-name font-normal">Susan &amp; David Motley</span></div>
+        </div>
+        <div class="glass rounded-2xl p-4">
+          <div class="chandler font-medium text-[rgb(var(--ink))]">Selfie Station</div>
+          <div class="text-sm">Sponsored by: <span class="sponsor-name font-normal">Michael's Shell</span>
+            <img src="./assets/shell-logo.png" alt="Shell Logo" class="h-10 w-auto inline-block align-middle" /></div>
+        </div>
+        <div class="glass rounded-2xl p-4">
+          <div class="chandler font-medium text-[rgb(var(--ink))]">Obstacle Course</div>
+          <div class="text-sm">Sponsored by: <span class="sponsor-name font-normal">The de Roode Family</span></div>
+        </div>
       </div>
-    </div>
-  </div>
     </section>
 
     <!-- SILENT AUCTION -->
-    <section id="auction" class="page w-full max-w-6xl mx-auto px-2 py-4 md:px-4 md:py-6">
-      <h2 class="text-2xl md:text-3xl font-extrabold mb-4">Silent Auction & Raffle</h2>
-      <div class="space-y-4 text-white/90 leading-relaxed text-sm sm:text-base">
-        <div class="mb-2">
-          <a href="https://www.adoptivefamiliesofhouston.org/packet/336316735#:~:text=0.00-,Raffle%20Tickets,-1%20Raffle%20Ticket" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-pink-500 hover:bg-pink-400 text-white font-semibold shadow">Buy Raffle Tickets</a>
+    <section id="auction" class="page w-full max-w-6xl mx-auto px-3 py-4 md:px-4 md:py-6">
+      <h2 class="sea-head display text-2xl md:text-3xl font-normal">Silent Auction &amp; Raffle</h2>
+      <hr class="sea-rule mb-5 mt-2" />
+      <div class="space-y-4 leading-relaxed text-sm sm:text-base">
+        <div>
+          <a href="https://www.adoptivefamiliesofhouston.org/packet/336316735#:~:text=0.00-,Raffle%20Tickets,-1%20Raffle%20Ticket" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[rgb(var(--coral))] hover:brightness-105 text-white font-bold shadow">Buy Raffle Tickets</a>
         </div>
-        <div class="bg-white/10 border-l-4 border-[rgb(var(--accent))] rounded-lg p-3">
-          <p class="font-semibold text-[rgb(var(--accent))] mb-1">Must be present to win.</p>
-          <p class="mb-1"><span class="font-semibold text-pink-300">Silent Auction Buy Now Option:</span> Purchase any silent auction item on the spot! See volunteers in the saloon for details.</p>
+        <div class="glass rounded-2xl border-l-4 border-l-[rgb(var(--sand))] p-4">
+          <p class="chandler font-medium text-[rgb(var(--ink))] mb-1">Must be present to win.</p>
+          <p><span class="font-bold text-[rgb(var(--coral))]">Silent Auction Buy Now Option:</span> Purchase any silent auction item on the spot! See volunteers in the saloon for details.</p>
         </div>
-        <!-- Raffle and Silent Auction Items -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-          <div class="bg-white/5 border border-white/10 rounded-xl p-4">
-            <h3 class="orbitron text-lg font-bold mb-2 text-yellow-300">Raffle Items</h3>
-            <ul class="list-disc list-inside space-y-1">
-              <li>Painting with a Twist - Heights Location Painting Session</li>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mt-6">
+          <div class="glass rounded-2xl p-4">
+            <h3 class="chandler text-lg font-medium mb-3 text-[rgb(var(--sand))]">Raffle Items</h3>
+            <ul class="star-bullet space-y-1.5">
+              <li>Painting with a Twist – Heights Location Painting Session</li>
               <li>Mad Potter $50 Gift Card</li>
               <li>Magic Basket</li>
               <li>Space Themed Basket</li>
@@ -296,17 +416,17 @@
               <li>Frozen Gift Basket</li>
               <li>Trash Truck Gift Basket</li>
               <li>Around the World Gift Basket</li>
-              <li>Dig World - Katy Location 4 tickets</li>
+              <li>Dig World – Katy Location 4 tickets</li>
               <li>Houston Botanic Gardens Family Membership</li>
-              <li>Night at the Movies Package - Rooftop Cinema Club</li>
+              <li>Night at the Movies Package – Rooftop Cinema Club</li>
               <li>Children's Museum of Houston 4 Guest Passes</li>
             </ul>
           </div>
-          <div class="bg-white/5 border border-white/10 rounded-xl p-4">
-            <h3 class="orbitron text-lg font-bold mb-2 text-pink-300">Silent Auction Items</h3>
-            <ul class="list-disc list-inside space-y-1">
-              <li>Hyatt Lost Pines - 2 night stay</li>
-              <li>Mario Brothers YOSHI rocking horse - hand crafted by Keith Cockerham</li>
+          <div class="glass rounded-2xl p-4">
+            <h3 class="chandler text-lg font-medium mb-3 text-[rgb(var(--coral))]">Silent Auction Items</h3>
+            <ul class="star-bullet space-y-1.5">
+              <li>Hyatt Lost Pines – 2 night stay</li>
+              <li>Mario Brothers YOSHI rocking horse – hand crafted by Keith Cockerham</li>
               <li>Parents Night Out Basket</li>
               <li>Michael Martinez Fine Portraits</li>
               <li>Houston Zoo Family Membership and giraffe feeding tickets</li>
@@ -315,106 +435,91 @@
               <li>Gorjana $150 Gift Card</li>
               <li>Elena Sandovici Seascape Artwork</li>
               <li>Celebration of Adoption Basket</li>
-              <li>Ballooms - 2 digit Balloon Art for yard</li>
-              <li>Kid Create Studio Family Membership - Greater Heights</li>
+              <li>Ballooms – 2 digit Balloon Art for yard</li>
+              <li>Kid Create Studio Family Membership – Greater Heights</li>
             </ul>
           </div>
         </div>
-    <!--<div>
-      <h3 class="orbitron text-base font-bold mb-2 text-white/80">Auction Schedule</h3>
-      <ul class="space-y-1 ml-2">
-        <li><span class="inline-block w-32 font-semibold text-white/80">12:00 PM</span> Bidding opens</li>
-        <li><span class="inline-block w-32 font-semibold text-white/80">2:25 PM</span> Last call for bids</li>
-        <li><span class="inline-block w-32 font-semibold text-white/80">2:30 PM</span> Auction closes</li>
-        <li><span class="inline-block w-32 font-semibold text-white/80">2:40 PM</span> Winners announced</li>
-      </ul>
-    </div>
-    <div>
-      <p class="mb-1">Minimum bid increments are listed on each bid sheet. Please write legibly and include a phone number.</p>
-      <p class="mb-1">All items are sold <span class="italic">as-is</span>. No exchanges or refunds.</p>
-      <p class="mb-1">Accepted payments: <span class="font-semibold">cash</span> and <span class="font-semibold">credit/debit</span>. Checks payable to <span class="italic">Adoptive Families of Houston</span>.</p>
-    </div>-->
-  </div>
+      </div>
     </section>
 
-    <!-- Learn More About AFH Button -->
-    <div class="w-full flex justify-center my-8">
-      <a href="https://www.adoptivefamiliesofhouston.org" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-lg shadow-lg transition">Learn More About AFH</a>
+    <!-- Learn More -->
+    <div class="w-full flex justify-center my-8 px-3">
+      <a href="https://www.adoptivefamiliesofhouston.org" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[rgb(var(--ink))] hover:brightness-125 text-white font-bold text-lg shadow-lg transition">Learn More About AFH</a>
     </div>
+
     <!-- FOOTER -->
-    <footer class="page w-full max-w-6xl mx-auto px-2 pt-2 pb-6 text-xs sm:text-sm text-white/70">
-      <hr class="border-white/10 mb-4" />
-      <div class="flex flex-col sm:flex-row gap-2 sm:items-center sm:justify-between">
-        <p>© <span id="year"></span> Adoptive Families of Houston. All rights reserved.</p>
+    <footer class="page w-full max-w-6xl mx-auto px-3 pt-2 pb-40 text-xs sm:text-sm text-[rgb(var(--ink-soft))]">
+      <hr class="sea-rule mb-4" />
+      <p>© <span id="year"></span> Adoptive Families of Houston. All rights reserved.</p>
     </footer>
   </main>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-    // Share button logic
-    const shareBtn = document.getElementById('share-btn');
-    // Device-specific share icon
-    const shareIconSpan = document.getElementById('share-icon');
-    function isIOS() {
-      return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-    }
-    function isAndroid() {
-      return /Android/.test(navigator.userAgent);
-    }
-    if (shareIconSpan) {
-      if (isIOS()) {
-        shareIconSpan.innerHTML = `<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"w-5 h-5\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 16V4\"/><path d=\"M8 8l4-4 4 4\"/><rect x=\"4\" y=\"16\" width=\"16\" height=\"4\" rx=\"2\"/></svg>`;
-      } else if (isAndroid()) {
-        shareIconSpan.innerHTML = `<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"w-5 h-5\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"18\" cy=\"5\" r=\"2\"/><circle cx=\"6\" cy=\"12\" r=\"2\"/><circle cx=\"18\" cy=\"19\" r=\"2\"/><line x1=\"8.59\" y1=\"13.51\" x2=\"15.42\" y2=\"17.49\"/><line x1=\"15.41\" y1=\"6.51\" x2=\"8.59\" y2=\"10.49\"/></svg>`;
-      } else {
-        // Default to iOS style for desktop/other
-        shareIconSpan.innerHTML = `<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"w-5 h-5\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 16V4\"/><path d=\"M8 8l4-4 4 4\"/><rect x=\"4\" y=\"16\" width=\"16\" height=\"4\" rx=\"2\"/></svg>`;
+
+    // ---- Rising bubbles ----
+    (function(){
+      const layer = document.querySelector('.bubbles');
+      if(!layer) return;
+      const art = ['bubble1','bubble2','bubble3','bubble4'];
+      const count = window.matchMedia('(max-width: 640px)').matches ? 10 : 18;
+      for(let i=0; i<count; i++){
+        const b = document.createElement('span');
+        const size = 14 + Math.random()*46;
+        b.style.backgroundImage   = `url('./assets/sea/${art[i % art.length]}.png')`;
+        b.style.width             = size + 'px';
+        b.style.height            = size + 'px';
+        b.style.left              = (Math.random()*100) + '%';
+        b.style.animationDuration = (16 + Math.random()*20) + 's';
+        b.style.animationDelay    = (-Math.random()*30) + 's';
+        layer.appendChild(b);
       }
-    }
+    })();
+
+    // Share button
+    const shareBtn = document.getElementById('share-btn');
+    const shareIconSpan = document.getElementById('share-icon');
+    const isAndroid = () => /Android/.test(navigator.userAgent);
+    const iosIcon = `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4"/><path d="M8 8l4-4 4 4"/><rect x="4" y="16" width="16" height="4" rx="2"/></svg>`;
+    const androidIcon = `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="2"/><circle cx="6" cy="12" r="2"/><circle cx="18" cy="19" r="2"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>`;
+    if (shareIconSpan) shareIconSpan.innerHTML = isAndroid() ? androidIcon : iosIcon;
     if (shareBtn) {
       shareBtn.addEventListener('click', async () => {
         const shareData = {
           title: document.title,
-          text: 'Adoption is Out of This World – AFH Picnic Program',
+          text: 'AFH Celebration of Adoption Picnic Program',
           url: window.location.href
         };
         if (navigator.share) {
-          try {
-            await navigator.share(shareData);
-          } catch (err) {
-            // User cancelled or error
-          }
+          try { await navigator.share(shareData); } catch (err) { /* cancelled */ }
         } else {
-          // Fallback: copy link
           try {
             await navigator.clipboard.writeText(window.location.href);
-            shareBtn.innerHTML = '<span class="text-green-300">Link copied!</span>';
-            setTimeout(() => { shareBtn.innerHTML = `<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"w-5 h-5\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M15 8a3 3 0 11-6 0 3 3 0 016 0zm6 8a3 3 0 11-6 0 3 3 0 016 0zm-6 0a3 3 0 11-6 0 3 3 0 016 0z\" /></svg><span class=\"hidden sm:inline\">Share</span>`; }, 1500);
+            const original = shareBtn.innerHTML;
+            shareBtn.innerHTML = '<span class="text-sm font-semibold">Link copied!</span>';
+            setTimeout(() => { shareBtn.innerHTML = original; }, 1500);
           } catch (err) {
             alert('Could not copy link.');
           }
         }
       });
     }
+
     // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(a=>{
       a.addEventListener('click', e=>{
-        const id = a.getAttribute('href');
-        const el = document.querySelector(id);
+        const el = document.querySelector(a.getAttribute('href'));
         if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth'}); }
       });
     });
-    // Hamburger menu toggle
+
+    // Hamburger menu
     const menuToggle = document.getElementById('menu-toggle');
     const mainMenuMobile = document.getElementById('main-menu-mobile');
-    menuToggle.addEventListener('click', () => {
-      mainMenuMobile.classList.toggle('hidden');
-    });
-    // Hide mobile menu on link click
+    menuToggle.addEventListener('click', () => mainMenuMobile.classList.toggle('hidden'));
     mainMenuMobile.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        mainMenuMobile.classList.add('hidden');
-      });
+      link.addEventListener('click', () => mainMenuMobile.classList.add('hidden'));
     });
   </script>
 </body>
