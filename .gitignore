@@ -1,3 +1,9 @@
 *.ai
 .DS_Store
 */.DS_Store
+
+# Large print files (over GitHub size limits) — kept in OneDrive only
+2026/print-pdfs/
+
+# Private: real names of anonymous sponsors and amounts
+2026/AFH Sponsors*.docx
