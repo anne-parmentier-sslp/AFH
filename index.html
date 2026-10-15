@@ -201,10 +201,10 @@
       <div class="flex items-center justify-between w-full">
         <div class="flex items-center gap-2">
           <img src="./assets/sea/logo-long.png" alt="Adoptive Families of Houston" class="h-7 w-auto" />
-          <span class="chandler text-lg font-medium whitespace-nowrap text-[rgb(var(--ink))] hidden sm:inline">Picnic Program</span>
+          <span class="chandler text-lg font-medium whitespace-nowrap text-[rgb(var(--ink))] hidden lg:inline">Picnic Program</span>
         </div>
         <div class="flex items-center gap-2">
-          <nav id="main-menu" aria-label="Main navigation" class="hidden sm:flex flex-row flex-wrap gap-2 sm:gap-4 text-sm font-semibold text-[rgb(var(--ink-soft))]">
+          <nav id="main-menu" aria-label="Main navigation" class="hidden md:flex flex-row flex-wrap gap-2 sm:gap-4 text-sm font-semibold text-[rgb(var(--ink-soft))]">
             <a class="hover:text-[rgb(var(--ink))] hover:underline" href="#welcome">Welcome</a>
             <a class="hover:text-[rgb(var(--ink))] hover:underline" href="#sponsors">Sponsors</a>
             <a class="hover:text-[rgb(var(--ink))] hover:underline" href="#map">Reef Map</a>
@@ -215,14 +215,14 @@
             <span id="share-icon"></span>
             <span class="hidden sm:inline text-sm font-semibold">Share</span>
           </button>
-          <button id="menu-toggle" class="sm:hidden p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[rgb(var(--wave))] text-[rgb(var(--ink))]" aria-label="Open menu">
+          <button id="menu-toggle" class="md:hidden p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[rgb(var(--wave))] text-[rgb(var(--ink))]" aria-label="Open menu">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
             </svg>
           </button>
         </div>
       </div>
-      <nav id="main-menu-mobile" aria-label="Mobile navigation" class="w-full flex flex-col gap-2 text-sm font-semibold absolute top-16 left-0 bg-white/95 backdrop-blur p-4 z-50 shadow-lg text-[rgb(var(--ink))] transition-all duration-200 hidden sm:hidden">
+      <nav id="main-menu-mobile" aria-label="Mobile navigation" class="w-full flex flex-col gap-2 text-sm font-semibold absolute top-full left-0 bg-white/95 backdrop-blur p-4 z-50 shadow-lg text-[rgb(var(--ink))] transition-all duration-200 hidden md:hidden">
         <a class="hover:underline" href="#welcome">Welcome</a>
         <a class="hover:underline" href="#sponsors">Sponsors</a>
         <a class="hover:underline" href="#map">Reef Map</a>
@@ -259,10 +259,10 @@
         </ul>
 
         <div class="mt-6 flex flex-wrap gap-3 justify-center">
-          <a href="#schedule" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 hover:bg-white border border-[rgb(var(--wave)/.5)] text-[rgb(var(--ink))] font-semibold">View Schedule</a>
-          <a href="#map" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 hover:bg-white border border-[rgb(var(--wave)/.5)] text-[rgb(var(--ink))] font-semibold">View Reef Map</a>
-          <a href="#auction" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[rgb(var(--sand))] hover:brightness-105 text-white font-bold shadow">Silent Auction</a>
-          <a href="https://www.adoptivefamiliesofhouston.org/packet/336316735#:~:text=0.00-,Raffle%20Tickets,-1%20Raffle%20Ticket" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[rgb(var(--coral))] hover:brightness-105 text-white font-bold shadow">Buy Raffle Tickets</a>
+          <a href="#schedule" class="grow sm:grow-0 justify-center inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 hover:bg-white border border-[rgb(var(--wave)/.5)] text-[rgb(var(--ink))] font-semibold">View Schedule</a>
+          <a href="#map" class="grow sm:grow-0 justify-center inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 hover:bg-white border border-[rgb(var(--wave)/.5)] text-[rgb(var(--ink))] font-semibold">View Reef Map</a>
+          <a href="#auction" class="grow sm:grow-0 justify-center inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[rgb(var(--sand))] hover:brightness-105 text-white font-bold shadow">Silent Auction</a>
+          <a href="https://www.adoptivefamiliesofhouston.org/packet/336316735#:~:text=0.00-,Raffle%20Tickets,-1%20Raffle%20Ticket" target="_blank" rel="noopener" class="grow sm:grow-0 justify-center inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[rgb(var(--coral))] hover:brightness-105 text-white font-bold shadow">Buy Raffle Tickets</a>
         </div>
       </div>
     </section>
@@ -273,8 +273,8 @@
       <p class="on-wash mt-1 mb-3 text-lg font-semibold italic text-[rgb(var(--ink-soft))]">To our amazing sponsors — thank you for your ocean-deep support</p>
       <hr class="sea-rule mb-5" />
 
-      <div class="space-y-4">
-        <div class="glass rounded-2xl border-l-4 border-l-[rgb(var(--sand))] p-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="glass rounded-2xl border-l-4 border-l-[rgb(var(--sand))] p-4 md:col-span-2">
           <h3 class="chandler text-lg md:text-xl font-medium mb-2 text-[rgb(var(--sand))]">Presenting</h3>
           <ul class="star-bullet sponsor-name space-y-1 text-[rgb(var(--ink-soft))]">
             <li>The Powell Family</li>
@@ -352,14 +352,17 @@
         <div class="glass rounded-2xl p-3 flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-3">
           <span class="chandler font-medium w-24 flex-shrink-0 text-[rgb(var(--ink))]">5:30 PM</span>
           <div>
-            Food lines close<br>
             Raffle Drawing<br>
-            Silent Auction
+            Silent Auction winner<br>
+            Food lines close
           </div>
         </div>
         <div class="glass rounded-2xl p-3 flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-3">
           <span class="chandler font-medium w-24 flex-shrink-0 text-[rgb(var(--ink))]">6:00 PM</span>
-          <div>Event ends</div>
+          <div>
+            Event ends<br>
+            Goodie bags!
+          </div>
         </div>
       </div>
     </section>
@@ -369,7 +372,7 @@
       <h2 class="sea-head display text-xl md:text-2xl font-normal">Reef Map</h2>
       <a href="./assets/Map.png" class="on-wash no-print text-sm font-semibold underline mt-1 inline-block text-[rgb(var(--ink-soft))]">Open full-size</a>
       <hr class="sea-rule mb-5 mt-2" />
-      <figure class="glass rounded-3xl overflow-hidden p-2 sm:p-3 w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl mx-auto">
+      <figure class="glass rounded-3xl overflow-hidden p-2 sm:p-3 w-full sm:max-w-md md:max-w-lg lg:max-w-2xl mx-auto">
         <img src="./assets/Map.jpg" alt="Event map showing check-in, food &amp; beverages, silent auction, raffle &amp; selfie station, games, face painting &amp; balloons, obstacle course, petting zoo &amp; pony rides, Dippin’ Dots, and parking" width="1189" height="1323" class="w-full h-auto mx-auto object-contain rounded-2xl" />
         <figcaption class="p-2 sm:p-3 text-xs sm:text-sm text-[rgb(var(--ink-soft))]">Areas are named and correspond to the activity list below. Use the “Open full-size” link above to zoom in.</figcaption>
       </figure>
@@ -407,53 +410,55 @@
         <div>
           <a href="https://www.adoptivefamiliesofhouston.org/packet/336316735#:~:text=0.00-,Raffle%20Tickets,-1%20Raffle%20Ticket" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[rgb(var(--coral))] hover:brightness-105 text-white font-bold shadow">Buy Raffle Tickets</a>
         </div>
-        <div class="glass rounded-2xl border-l-4 border-l-[rgb(var(--sand))] p-4">
-          <p class="chandler font-medium text-[rgb(var(--ink))] mb-1">Must be present to win.</p>
+        <div class="glass rounded-2xl border-l-4 border-l-[rgb(var(--sand))] p-4 space-y-1.5">
+          <p class="chandler font-medium text-[rgb(var(--ink))]">Must be present to win.</p>
+          <p><span class="font-bold text-[rgb(var(--coral))]">Raffle Tickets:</span> $5.00 per ticket or $20.00 for 6&nbsp;tickets</p>
           <p><span class="font-bold text-[rgb(var(--coral))]">Silent Auction Buy Now Option:</span> Purchase any silent auction item on the spot! See volunteers in the saloon for details.</p>
+          <p><span class="font-bold text-[rgb(var(--coral))]">Payment:</span> Cash, check, credit card or Venmo</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mt-6">
           <div class="glass rounded-2xl p-4">
             <h3 class="chandler text-lg font-medium mb-3 text-[rgb(var(--sand))]">Raffle Items</h3>
             <ul class="star-bullet space-y-1.5">
-              <li>Let’s Create Gift Basket (Mad Potter and Painting with a Twist gift cards)</li>
-              <li>Let’s Play Gift Basket (Play Street Museum passes + Bluey gift basket)</li>
-              <li>Family Fun in Katy (Monster Mini Golf passes + Takaro Sports gift card)</li>
-              <li>Date Night (Meow Wolf tickets + Burger Joint gift card)</li>
-              <li>One month of Momentum Indoor Climbing for two (or two weeks for four)</li>
-              <li>Decorate + Explore Outdoors (Houston Botanic Garden Family Membership + fall pumpkin display from The Round Top Collection)</li>
-              <li>Launch Family Entertainment Gift Basket</li>
-              <li>Dinner and a Movie (Rooftop Cinema Club + Berg Hospitality)</li>
-              <li>Under the Sea LEGO Sets (2 kits)</li>
-              <li>Four tickets to Santa’s Wonderland</li>
-              <li>Adoption Gift Basket (handmade sculpture + books)</li>
-              <li>Four tickets to the Texas Renaissance Festival</li>
-              <li>Baby Fun (Baby Yoda gift basket + four Mister Car Wash tickets)</li>
-              <li>Cowboy Package (four tickets to Once Upon a Cowboy + Space Cowboys)</li>
-              <li>Soccer Shots Birthday Party</li>
+              <li><span class="font-semibold text-[rgb(var(--ink))]">Let’s Create Gift Basket</span> – Mad Potter and Painting with a Twist gift cards, plus a floral painting</li>
+              <li><span class="font-semibold text-[rgb(var(--ink))]">Let’s Play Gift Basket</span> – Three Play Street Museum passes and a Bluey gift basket</li>
+              <li><span class="font-semibold text-[rgb(var(--ink))]">Family Fun in Katy</span> – Four glow Monster Mini Golf passes and a $50 Taroko Sports gift card</li>
+              <li><span class="font-semibold text-[rgb(var(--ink))]">Date Night</span> – Two Meow Wolf tickets and a $50 Burger Joint gift card</li>
+              <li><span class="font-semibold text-[rgb(var(--ink))]">Momentum Indoor Climbing</span> – One month of climbing for two, or two weeks for four</li>
+              <li><span class="font-semibold text-[rgb(var(--ink))]">Decorate + Explore Outdoors</span> – Houston Botanic Garden family membership and a fall pumpkin display</li>
+              <li><span class="font-semibold text-[rgb(var(--ink))]">Launch Family Entertainment</span> – Four all-day passes, lunch for four, bowling and Launch gear</li>
+              <li><span class="font-semibold text-[rgb(var(--ink))]">Dinner and a Movie</span> – Rooftop Cinema Club tickets and a Berg Hospitality meal</li>
+              <li><span class="font-semibold text-[rgb(var(--ink))]">Under the Sea LEGO</span> – Two LEGO kits: the Little Mermaid and Sea Creatures</li>
+              <li><span class="font-semibold text-[rgb(var(--ink))]">Santa’s Wonderland</span> – Four tickets to Santa’s Wonderland</li>
+              <li><span class="font-semibold text-[rgb(var(--ink))]">Adoption Gift Basket</span> – “Superman was adopted too” sculpture and adoption books</li>
+              <li><span class="font-semibold text-[rgb(var(--ink))]">Texas Renaissance Festival</span> – Four festival tickets</li>
+              <li><span class="font-semibold text-[rgb(var(--ink))]">Fun for Your Baby and Car</span> – Baby Yoda gift basket and four Mister Car Wash tickets</li>
+              <li><span class="font-semibold text-[rgb(var(--ink))]">Cowboy Package</span> – Once Upon a Cowboy and Space Cowboys tickets, four each</li>
+              <li><span class="font-semibold text-[rgb(var(--ink))]">Soccer Shots Birthday Party</span> – A coach-led soccer birthday party for your child</li>
             </ul>
           </div>
           <div class="glass rounded-2xl p-4">
             <h3 class="chandler text-lg font-medium mb-3 text-[rgb(var(--coral))]">Silent Auction Items</h3>
             <ul class="star-bullet space-y-1.5">
-              <li>Snacks and a Show (two tickets to the Alley Theatre + Phoenicia gift card)</li>
-              <li>Rustic Brush Gift Basket</li>
-              <li>Seismique Gift Basket</li>
-              <li>Facial + LED Face Mask + James Avery Jewelry</li>
-              <li>Michael Martinez / Julizza Gomez Portraits (four different packages to bid on)</li>
-              <li>Private Wine Class for 10–16 people at Nice Winery</li>
-              <li>Rainy Day Fun at Home (tin can phones + Pokémon gift basket)</li>
-              <li>Six dozen Tiff’s Treats cookies</li>
-              <li>Little Beakers gift cards</li>
-              <li>Ten 90-minute Slick City passes</li>
-              <li>Dinner and Ballet (two tickets to Houston Ballet + $100 Taste of Texas gift card)</li>
-              <li>Family Game Night (games + Raising Cane’s gift basket)</li>
-              <li>Wine Gift Basket + wine tasting for six at Messina Hof Winery</li>
-              <li>Houston Zoo Family Membership</li>
-              <li>One season of Prelude Music Classes</li>
-              <li>Nespresso Vertuo Next + Aeroccino3 Milk Frother</li>
-              <li>One week of Language Kids Language Immersion Camp</li>
-              <li>Two tickets to Harry Potter at the Hobby Center</li>
+              <li><span class="font-semibold text-[rgb(var(--ink))]">Snacks and a Show</span> – Two Alley Theatre tickets and a Phoenicia gift card</li>
+              <li><span class="font-semibold text-[rgb(var(--ink))]">Rustic Brush Gift Basket</span> – DIY studio aprons, art supplies and a $35 gift card</li>
+              <li><span class="font-semibold text-[rgb(var(--ink))]">Seismique Gift Basket</span> – Family four-pack for the museum and mini golf, plus gear</li>
+              <li><span class="font-semibold text-[rgb(var(--ink))]">Spa Day + James Avery</span> – Facial, at-home LED face mask and James Avery jewelry</li>
+              <li><span class="font-semibold text-[rgb(var(--ink))]">Family Portraits</span> – Four portrait packages, bid separately ($1,000 each)</li>
+              <li><span class="font-semibold text-[rgb(var(--ink))]">Private Wine Class</span> – Private class at Nice Winery for 10 to 16 people</li>
+              <li><span class="font-semibold text-[rgb(var(--ink))]">Rainy Day Fun at Home</span> – Tin can phones and a Pokémon gift basket</li>
+              <li><span class="font-semibold text-[rgb(var(--ink))]">Tiff’s Treats Cookies</span> – Six dozen Tiff’s Treats cookies</li>
+              <li><span class="font-semibold text-[rgb(var(--ink))]">Little Beakers</span> – Open-lab certificates, camp and party discounts, gift cards</li>
+              <li><span class="font-semibold text-[rgb(var(--ink))]">Slick City Passes</span> – Ten 90-minute passes to the indoor slide park</li>
+              <li><span class="font-semibold text-[rgb(var(--ink))]">Dinner and Ballet</span> – Two Houston Ballet tickets and a $100 Taste of Texas gift card</li>
+              <li><span class="font-semibold text-[rgb(var(--ink))]">Family Game Night</span> – Family games and a Raising Cane’s gift basket</li>
+              <li><span class="font-semibold text-[rgb(var(--ink))]">Wine Basket + Tasting</span> – Three Orin Swift wines, accessories and a tasting for six</li>
+              <li><span class="font-semibold text-[rgb(var(--ink))]">Houston Zoo Membership</span> – One-year family membership</li>
+              <li><span class="font-semibold text-[rgb(var(--ink))]">Prelude Music Classes</span> – One season of music classes for young children</li>
+              <li><span class="font-semibold text-[rgb(var(--ink))]">Nespresso Coffee Bar</span> – Vertuo Next coffee maker and Aeroccino 3 milk frother</li>
+              <li><span class="font-semibold text-[rgb(var(--ink))]">Language Immersion Camp</span> – One week of Language Kids World camp</li>
+              <li><span class="font-semibold text-[rgb(var(--ink))]">Harry Potter Tickets</span> – Two tickets at the Hobby Center</li>
             </ul>
           </div>
         </div>
